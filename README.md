@@ -1,4 +1,4 @@
-# Global Drought Atlas
+# HYDRA: HYdrological Drought & Rainfall Atlas
 
 This repository contains a set of streamlined Python functions for performing seasonal lagged regression analysis between large-scale climate modes (e.g., ENSO, PDO, IOD) and hydroclimate fields (e.g., PDSI, SST, soil moisture). It is designed for use with datasets that are already seasonally averaged (e.g., DJF, MAM, JJA, SON), and leverages xarray, numpy, and matplotlib for efficient geospatial analysis and visualization.
 
