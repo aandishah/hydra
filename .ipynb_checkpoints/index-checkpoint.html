@@ -1,0 +1,77 @@
+---
+layout: default
+title: HYDRA Project
+---
+
+<!-- Banner Section -->
+<section style="text-align:center; padding: 80px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <h1 style="font-size: 3em; margin-bottom: 0.3em;">HYDRA</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em;">HYdrological Drought & Rainfall Atlas</h2>
+  <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
+    A Python toolkit for exploring the links between climate variability modes (ENSO, PDO, AMO, IOD) 
+    and hydroclimate fields (PDSI, SST, soil moisture). 
+    Analyze lagged regressions, visualize teleconnections, and uncover global drought patterns.
+  </p>
+  <a href="https://github.com/aandishah/hydra" class="btn" style="margin-top: 20px; background: #95d5b2; color: #1b4332; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">
+    View on GitHub
+  </a>
+</section>
+
+<!-- Features Section -->
+<section style="padding: 60px 20px; max-width: 1000px; margin: auto; text-align:center;">
+  <h2>🔑 Key Features</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; text-align:left;">
+    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
+      <h3>Lagged Regression</h3>
+      <p>Capture seasonal and interannual lags between climate indices and hydroclimate anomalies.</p>
+    </div>
+    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
+      <h3>Flexible Inputs</h3>
+      <p>Works seamlessly with <code>xarray</code> seasonal datasets (DJF, MAM, JJA, SON).</p>
+    </div>
+    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
+      <h3>Detrending & Significance</h3>
+      <p>Built-in detrending and p-value maps with hatching for non-significant regions.</p>
+    </div>
+    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
+      <h3>Custom Plotting</h3>
+      <p>Beautiful seasonal maps and multi-panel plots with clean color schemes.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Example Section -->
+<section style="background:#e9f5ec; padding: 60px 20px; text-align:center;">
+  <h2>📊 Example Output</h2>
+  <img src="assets/images/example_output.png" alt="Example Map" style="max-width:80%; border-radius:10px; margin:20px auto;">
+  <p style="max-width: 700px; margin: 0 auto; font-size: 1.1em;">
+    Regression of ENSO onto global PDSI, with hatching for non-significant areas.
+  </p>
+</section>
+
+<!-- Quick Start Section -->
+<section style="padding: 60px 20px; max-width: 900px; margin: auto; text-align:center;">
+  <h2>🚀 Quick Start</h2>
+  <pre style="text-align:left; background:#212529; color:#f8f9fa; padding:20px; border-radius:10px; overflow-x:auto;">
+git clone https://github.com/yourusername/hydra.git
+cd hydra
+pip install -r requirements.txt
+jupyter notebook examples/enso_pdsi_regression.ipynb
+  </pre>
+</section>
+
+<!-- Citation Section -->
+<section style="background:#f8f9fa; padding: 60px 20px; text-align:center;">
+  <h2>📜 Citation</h2>
+  <p>If you use HYDRA in your research, please cite:</p>
+  <blockquote style="max-width:700px; margin:20px auto; font-style:italic;">
+    Samara, A. T., et al. (2025). HYDRA: A Python Toolkit for Climate Teleconnection and Drought Analysis.
+  </blockquote>
+</section>
+
+<!-- Contact Section -->
+<section style="padding: 60px 20px; text-align:center;">
+  <h2>🙌 Contributing & Contact</h2>
+  <p>Contributions are welcome! Submit a pull request or open an issue.</p>
+  <p>For questions, email <a href="mailto:aandishah.s@columbia.edu">your.email@domain.edu</a>.</p>
+</section>
