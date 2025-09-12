@@ -6,7 +6,7 @@ This repository contains a set of streamlined Python functions for performing re
 Aandishah Tehzeeb Samara (Columbia University, LDEO)  
 
 **Collaborators:**  
-Jason Smerdon, Richard Seager
+Richard Seager & Jason Smerdon
 
 **Key Features** 
 
