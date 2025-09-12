@@ -1,6 +1,12 @@
 # HYDRA: HYdrological Drought & Rainfall Atlas
 
-This repository contains a set of streamlined Python functions for performing regression analysis between large-scale climate modes (e.g., ENSO, PDO, IOD) and hydroclimate fields (e.g., PDSI, SST, soil moisture). It is designed for use with datasets that are already seasonally averaged (e.g., DJF, MAM, JJA, SON), and leverages xarray, numpy, and matplotlib for geospatial analysis and visualization.
+This repository contains a set of streamlined Python functions for computing and performing regression analysis between large-scale climate modes (e.g., ENSO, PDO, IOD) and hydroclimate fields (e.g., PDSI, SST, soil moisture). It is designed for use with datasets that are already seasonally averaged (e.g., DJF, MAM, JJA, SON), and leverages xarray, numpy, and matplotlib for geospatial analysis and visualization.
+
+**Lead Developer:**  
+Aandishah Tehzeeb Samara (Columbia University, Lamont Doeherty Earth Observatory)  
+
+**Collaborators:**  
+Richard Seager(Lamont Doeherty Earth Observatory) & Jason Smerdon (Columbia Climate School)
 
 **Key Features** 
 
@@ -29,4 +35,6 @@ xarray, numpy, scipy, matplotlib, cartopy
 **Project website (GitHub Pages)** :  [WAITING ON VERFICATION]
 
 * [https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
+
+
 
