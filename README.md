@@ -27,5 +27,5 @@ xarray, numpy, scipy, matplotlib, cartopy
 * notebooks/ – example Jupyter notebooks demonstrating usage on real data
 
 * Project website (GitHub Pages):  [WAITING ON VERFICATION]
-[https://YOUR_USERNAME.github.io/hydra](https://YOUR_USERNAME.github.io/hydra)
+[https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
 
