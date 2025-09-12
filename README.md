@@ -25,3 +25,7 @@ xarray, numpy, scipy, matplotlib, cartopy
 * plotting.py – multi-panel and dual-variable map plotting functions
 * utils.py – detrending, time shifting, and alignment helpers
 * notebooks/ – example Jupyter notebooks demonstrating usage on real data
+
+* Project website (GitHub Pages):  [WAITING ON VERFICATION]
+[https://YOUR_USERNAME.github.io/hydra](https://YOUR_USERNAME.github.io/hydra)
+
