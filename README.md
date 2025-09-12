@@ -2,6 +2,12 @@
 
 This repository contains a set of streamlined Python functions for performing regression analysis between large-scale climate modes (e.g., ENSO, PDO, IOD) and hydroclimate fields (e.g., PDSI, SST, soil moisture). It is designed for use with datasets that are already seasonally averaged (e.g., DJF, MAM, JJA, SON), and leverages xarray, numpy, and matplotlib for geospatial analysis and visualization.
 
+**Lead Developer:**  
+Aandishah Tehzeeb Samara (Columbia University, LDEO)  
+
+**Collaborators:**  
+Jason Smerdon, Richard Seager
+
 **Key Features** 
 
 * Lagged Regression Analysis: Supports both positive and negative lags, allowing for "index leads" or "field leads" logic, with customizable lags in both seasons and years.
@@ -29,4 +35,6 @@ xarray, numpy, scipy, matplotlib, cartopy
 **Project website (GitHub Pages)** :  [WAITING ON VERFICATION]
 
 * [https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
+
+
 
