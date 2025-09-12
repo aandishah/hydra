@@ -4,7 +4,7 @@ HYDRA provides a reproducible framework for linking large-scale climate modes to
 
 ## Features
 - Seasonal and lagged regression
-- Detrending and statistical significance testing
+- Safe detrending and statistical significance testing
 - Land–ocean composite plotting
 - Teleconnection attribution for global drought variability
 
