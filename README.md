@@ -26,6 +26,7 @@ xarray, numpy, scipy, matplotlib, cartopy
 * utils.py – detrending, time shifting, and alignment helpers
 * notebooks/ – example Jupyter notebooks demonstrating usage on real data
 
-** Project website (GitHub Pages) ** :  [WAITING ON VERFICATION]
-[https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
+**Project website (GitHub Pages)** :  [WAITING ON VERFICATION]
+
+* [https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
 
