@@ -1,12 +1,12 @@
 ---
 layout: default
-title: PDO | HYDRA 
+title: PDO
 ---
 
 <!-- Navbar -->
 <nav style="position:fixed; top:0; left:0; right:0; background:#1b4332; padding:12px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
   <div style="color:white; font-weight:bold; font-size:1.3em;">
-    <a href="./index.html" style="color:white; text-decoration:none;">HYDRA</a>
+    <a href="./index.html" style="color:white; text-decoration:none;">HYDRA | Hydrological Drought & Rainfall Atlas</a>
   </div>
   <div>
     <a href="./enso.html" style="color:white; margin:0 15px; text-decoration:none;">ENSO</a>
@@ -19,13 +19,83 @@ title: PDO | HYDRA
     <a href="./pna.html" style="color:white; margin:0 15px; text-decoration:none;">PNA</a>
   </div>
 </nav>
-
 <div style="height:70px;"></div>
 
 <section style="text-align:center; padding: 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
-  <h1 style="font-size: 3em; margin-bottom: 0.3em;">PDO</h1>
-  <h2 style="font-weight: 400; margin-bottom: 1em;">Pacific Decadal Oscillation</h2>
-  <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
-    Explore how decadal-scale Pacific variability influences drought persistence, rainfall, and global teleconnections.
+  <h1 style="font-size: 3em; margin-bottom: 0.3em; color: white;"> PDO</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em;color: white;">Pacific Decadal Oscillation</h2>
+  <p style="font-size: 1.2em; max-width: 700px; margin: 0.1 auto;">
+    Analyze the influence of PDO on global hydroclimate variability.
   </p>
+
+    <!-- Buttons -->
+  <div style="display:flex; justify-content:center; gap:20px;">
+    <a href="#pdo-long" style="background:#95d5b2; color:#1b4332; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold;">
+      Long Term [1903–2023]
+    </a>
+    <a href="#pdo-short" style="background:#95d5b2; color:#1b4332; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold;">
+      Short Term [1980–2023]
+    </a>
+  </div>
+</section>
+
+<!-- PDO Long Term Section -->
+<section id="pdo-long" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
+  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">PDO Long Term</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1903–2023</h2>
+  
+  <h2 style="margin-bottom: 1em;color: white;">Index & Power Spectrum</h2>
+  <img src="./Figures/PDO/PDO_Index_PSD_LT.png" 
+       alt="PDO Index PSD Long-Term" 
+       style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  <p style="margin-top:10px; font-size:0.95em; color:#444;">
+    PDO Index and PSD (Long-Term)
+  </p>
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em;color: white;">
+  Regression Analysis 
+  </h1>
+  <h3 style="margin-bottom: 1em;color: white;">
+  Explore PDO impacts on hydroclimate over the century-plus record.
+  </h3>
+
+
+  <!-- Toggle Buttons -->
+  <div style="margin-bottom:30px;">
+    <button onclick="showImage('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImage('ppt')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT</button>
+    <button onclick="showImage('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImage('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <!-- Image Containers -->
+  <div id="image-container" style="max-width:900px; margin:0 auto;">
+    <img id="pdsi" src="./Figures/PDO/PDO_LT_REG_PDSI.png" alt="PDO Long Term PDSI" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="ppt"  src="./Figures/PDO/PDO_LT_REG_PPT.png"  alt="PDO Long Term PPT"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tmp"  src="./Figures/PDO/PDO_LT_REG_TMP.png"  alt="PDO Long Term TMP"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="all"  src="./Figures/PDO/PDO_LT_REG_COMBO.png" alt="PDO Long Term ALL"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+</section>
+
+<!-- Script to handle toggle -->
+<script>
+function showImage(id) {
+  // Hide all
+  document.querySelectorAll('#image-container img').forEach(img => img.style.display = 'none');
+  // Show selected
+  document.getElementById(id).style.display = 'block';
+}
+
+// Show PDSI by default
+showImage('pdsi');
+</script>
+
+
+<section id="pdo-short" style="text-align:center; padding:60px 20px;">
+  <h2 style="margin-bottom: 1em;">PDO Index & Power Spectrum (Short Term: 1980–2023)</h2>
+  <img src="./Figures/PDO/PDO_Index_PSD_ST.png" 
+       alt="PDO Index PSD Short-Term" 
+       style="max-width:700px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+</section>
+
+
 </section>
