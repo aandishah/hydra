@@ -3,6 +3,52 @@ layout: default
 title: Hydrological Drought & Rainfall Atlas
 ---
 
+<!-- Password Gate -->
+<div id="hydra-gate" style="position:fixed; inset:0; background:#1b4332; color:white; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px;">
+  <h2 style="margin-bottom:10px;">HYDRA</h2>
+  <p style="margin-bottom:20px;">This site is password protected.</p>
+  <input id="hydra-pass" type="password" placeholder="Enter password" style="padding:10px; border-radius:6px; border:none; margin-bottom:10px; width:220px;">
+  <br>
+  <button onclick="hydraCheckPassword()" style="padding:10px 24px; border:none; border-radius:6px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Enter</button>
+  <p id="hydra-error" style="color:#ffb4b4; margin-top:10px; display:none;">Incorrect password.</p>
+</div>
+
+<script>
+(function() {
+  var HYDRA_HASH = "4da7acf795ed00da4f34f7515a2ae53aaaf080d99807dfa28ddb6d99b6f2ab1d";
+
+  function hideGate() {
+    var gate = document.getElementById('hydra-gate');
+    if (gate) gate.style.display = 'none';
+  }
+
+  if (localStorage.getItem('hydra_auth') === '1') {
+    hideGate();
+  }
+
+  async function sha256(text) {
+    var enc = new TextEncoder().encode(text);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  window.hydraCheckPassword = async function() {
+    var input = document.getElementById('hydra-pass').value;
+    var hash = await sha256(input);
+    if (hash === HYDRA_HASH) {
+      localStorage.setItem('hydra_auth', '1');
+      hideGate();
+    } else {
+      document.getElementById('hydra-error').style.display = 'block';
+    }
+  };
+
+  document.getElementById('hydra-pass').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') hydraCheckPassword();
+  });
+})();
+</script>
+
 <!-- Navbar -->
 <nav style="position:fixed; top:0; left:0; right:0; background:#1b4332; padding:12px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
   <div style="color:white; font-weight:bold; font-size:1.3em;">
@@ -31,9 +77,6 @@ title: Hydrological Drought & Rainfall Atlas
     An online archive for exploring the links between different climate indices and hydroclimate fields. 
     Analyze teleconnection maps from regressions and agreement composites to visualize the connections between different modes of climate variability and global drought and rainfall patterns.
   </p>
-  <!-- <a href="https://github.com/yourusername/hydra" class="btn" style="margin-top: 20px; background: #95d5b2; color: #1b4332; padding: 12px 24px; border-radius: 8px; text-decoration: none; font-weight: bold;">
-    View on GitHub
-  </a> -->
 </section>
 
 <!-- Features Section -->
@@ -48,10 +91,6 @@ title: Hydrological Drought & Rainfall Atlas
       <h3>Flexible Inputs</h3>
       <p>Works seamlessly with <code>xarray</code> seasonal datasets (DJF, MAM, JJA, SON).</p>
     </div>
-    <!-- <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
-      <h3>Detrending & Significance</h3>
-      <p>Built-in detrending and p-value maps with hatching for non-significant regions.</p>
-    </div> -->
     <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
       <h3>Custom Plotting</h3>
       <p>Seasonal maps and multi-panel plots with clean color schemes.</p>
@@ -85,7 +124,7 @@ jupyter notebook examples/enso_pdsi_regression.ipynb
   <h2>📜 Citation</h2>
   <p>If you use HYDRA in your research, please cite:</p>
   <blockquote style="max-width:700px; margin:20px auto; font-style:italic;">
-    Samara, A., et al. In Prep. The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes</h3>
+    Samara, A., et al. In Prep. The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes
   </blockquote>
 </section>
 
