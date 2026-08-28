@@ -34,7 +34,7 @@ title: ENSO
 
     <!-- Image -->
   <div style="display:flex; justify-content:center;">
-    <img src="./Figures/ENSO/ENSO_INDEX_TS_LT_ST.png" 
+    <img src="./figures/ENSO/ENSO_INDEX_TS_LT_ST.png" 
        alt="ENSO Index PSD Long-Term" 
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
@@ -56,50 +56,68 @@ title: ENSO
   <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">ENSO Long Term</h1>
   <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1901–2024</h2>
   <h2 style="margin-bottom: 1em;color: white;">Index Comparison</h2>
-  <img src="./Figures/ENSO/ENSO_INDEX_TS_LT_ST.png" 
+  <img src="./figures/ENSO/ENSO_INDEX_TS_LT_ST.png" 
        alt="ENSO Index PSD Long-Term" 
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   <p style="margin-top:10px; font-size:0.95em; color:#444;">
     ENSO Index and PSD (Long-Term)
   </p>
-  <h1 style="font-size: 2.5em; margin-bottom: 0.1em;color: white;">
-  Regression Analysis 
+
+  <!-- Teleconnections -->
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 1.5em; color: white;">
+    Teleconnection Maps
   </h1>
-  <h3 style="margin-bottom: 1em;color: white;">
-  Explore ENSO impacts on hydroclimate over the century-plus record.
+  <h3 style="margin-bottom: 1em; color: white;">
+    Explore ENSO impacts on hydroclimate over the century-plus record.
   </h3>
 
-
-  <!-- Toggle Buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImage('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="showImage('ppt')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT</button>
-    <button onclick="showImage('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="showImage('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button onclick="showImage('tele-pdsi','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImage('tele-ppt','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT</button>
+    <button onclick="showImage('tele-tmp','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImage('tele-all','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
   </div>
 
-  <!-- Image Containers -->
-  <div id="image-container" style="max-width:900px; margin:0 auto;">
-    <img id="pdsi" src="./Figures/ENSO/ENSO_LT_REG_PDSI.png" alt="ENSO Long Term PDSI" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="ppt"  src="./Figures/ENSO/ENSO_LT_REG_PPT.png"  alt="ENSO Long Term PPT"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tmp"  src="./Figures/ENSO/ENSO_LT_REG_TMP.png"  alt="ENSO Long Term TMP"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="all"  src="./Figures/ENSO/ENSO_LT_REG_COMBO.png" alt="ENSO Long Term ALL"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  <div id="tele-container" style="max-width:900px; margin:0 auto;">
+    <img id="tele-pdsi" src="./figures/ENSO/ENSO_SST_PDSI_REG_LT.png" alt="ENSO Long Term PDSI Teleconnection" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-ppt"  src="./figures/ENSO/ENSO_SST_PPT_CRU_REG_LT.png"  alt="ENSO Long Term PPT Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-tmp"  src="./figures/ENSO/ENSO_SST_TMP_REG_LT.png"  alt="ENSO Long Term TMP Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-all"  src="./figures/ENSO/ENSO_ALL_REG_LT.png" alt="ENSO Long Term ALL Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Agreements -->
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 2em; color: white;">
+    Agreement Maps
+  </h1>
+  <h3 style="margin-bottom: 1em; color: white;">
+    Agreement of ENSO teleconnections across the century-plus record.
+  </h3>
+
+  <div style="margin-bottom:30px;">
+    <button onclick="showImage('agr-pdsi','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImage('agr-ppt','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT</button>
+    <button onclick="showImage('agr-tmp','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImage('agr-all','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <div id="agr-container" style="max-width:900px; margin:0 auto;">
+    <img id="agr-pdsi" src="./figures/ENSO/ENSO_SST_PDSI_AGR_LT.png" alt="ENSO Long Term PDSI Agreement" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-ppt"  src="./figures/ENSO/ENSO_SST_PPT_CRU_AGR_LT.png"  alt="ENSO Long Term PPT Agreement"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-tmp"  src="./figures/ENSO/ENSO_SST_TMP_AGR_LT.png"  alt="ENSO Long Term TMP Agreement"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-all"  src="./figures/ENSO/ENSO_ALL_AGR_LT.png" alt="ENSO Long Term ALL Agreement"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 </section>
 
-<!-- Script to handle toggle -->
 <script>
-function showImage(id) {
-  // Hide all
-  document.querySelectorAll('#image-container img').forEach(img => img.style.display = 'none');
-  // Show selected
+function showImage(id, group) {
+  document.querySelectorAll('#' + group + '-container img').forEach(img => img.style.display = 'none');
   document.getElementById(id).style.display = 'block';
 }
 
-// Show PDSI by default
-showImage('pdsi');
+// Defaults
+showImage('tele-pdsi', 'tele');
+showImage('agr-pdsi', 'agr');
 </script>
-
 
 <!-- <section id="enso-short" style="text-align:center; padding:60px 20px;">
   <h2 style="margin-bottom: 1em;">ENSO Index & Power Spectrum (Short Term: 1980–2023)</h2>
