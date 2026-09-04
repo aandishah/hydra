@@ -1,0 +1,256 @@
+---
+layout: default
+title: Usage Examples | HYDRA
+---
+
+<!-- Password Gate -->
+<div id="hydra-gate" style="position:fixed; inset:0; background:#1b4332; color:white; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px;">
+  <h2 style="margin-bottom:10px;">HYDRA</h2>
+  <p style="margin-bottom:20px;">This site is password protected.</p>
+  <input id="hydra-pass" type="password" placeholder="Enter password" style="padding:10px; border-radius:6px; border:none; margin-bottom:10px; width:220px;">
+  <br>
+  <button onclick="hydraCheckPassword()" style="padding:10px 24px; border:none; border-radius:6px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Enter</button>
+  <p id="hydra-error" style="color:#ffb4b4; margin-top:10px; display:none;">Incorrect password.</p>
+</div>
+
+<script>
+(function() {
+  var HYDRA_HASH = "4da7acf795ed00da4f34f7515a2ae53aaaf080d99807dfa28ddb6d99b6f2ab1d";
+
+  function hideGate() {
+    var gate = document.getElementById('hydra-gate');
+    if (gate) gate.style.display = 'none';
+  }
+
+  if (localStorage.getItem('hydra_auth') === '1') {
+    hideGate();
+  }
+
+  async function sha256(text) {
+    var enc = new TextEncoder().encode(text);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  window.hydraCheckPassword = async function() {
+    var input = document.getElementById('hydra-pass').value;
+    var hash = await sha256(input);
+    if (hash === HYDRA_HASH) {
+      localStorage.setItem('hydra_auth', '1');
+      hideGate();
+    } else {
+      document.getElementById('hydra-error').style.display = 'block';
+    }
+  };
+
+  document.getElementById('hydra-pass').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') hydraCheckPassword();
+  });
+})();
+</script>
+
+<!-- Navbar -->
+<nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+  <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
+    <div style="color:white; font-weight:bold; font-size:1.3em;">
+      <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought &amp; Rainfall Atlas</a>
+    </div>
+    <div>
+      <a href="./about.html" style="color:white; margin:0 15px; text-decoration:none;">About</a>
+      <a href="./methods.html" style="color:white; margin:0 15px; text-decoration:none;">Methods</a>
+      <a href="./usage.html" style="color:white; margin:0 15px; text-decoration:none;">Usage Examples</a>
+      <a href="./contact.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    </div>
+  </div>
+  <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <a href="./enso.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
+    <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
+    <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
+    <a href="./tpi.html" style="color:white; text-decoration:none; padding:0 12px;">TPI</a><span style="color:#95d5b2;">|</span>
+    <a href="./aao.html" style="color:white; text-decoration:none; padding:0 12px;">AAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./ao.html" style="color:white; text-decoration:none; padding:0 12px;">AO</a><span style="color:#95d5b2;">|</span>
+    <a href="./sam.html" style="color:white; text-decoration:none; padding:0 12px;">SAM</a><span style="color:#95d5b2;">|</span>
+    <a href="./nao.html" style="color:white; text-decoration:none; padding:0 12px;">NAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./npi.html" style="color:white; text-decoration:none; padding:0 12px;">NPI</a>
+  </div>
+</nav>
+
+<style>
+  .hydra-nav a {
+    transition: text-shadow 0.2s ease, font-weight 0.2s ease;
+  }
+  .hydra-nav a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
+  }
+  .hydra-body { max-width: 900px; margin: auto; padding: 0 20px; line-height: 1.7; }
+  .hydra-body h2 { margin-top: 50px; color:#1b4332; }
+  .hydra-body h3 { margin-top: 32px; color:#2d6a4f; }
+  .hydra-note { background:#e9f5ec; padding:20px; border-radius:10px; margin:30px 0; }
+  .hydra-q { background:#f8f9fa; padding:20px 24px; border-left:4px solid #2d6a4f; border-radius:6px; margin:24px 0; }
+  .hydra-q ol { margin:10px 0 0 0; }
+  .hydra-figure { margin:30px 0; text-align:center; }
+  .hydra-figure img { max-width:90%; border-radius:10px; }
+  .hydra-figure figcaption { font-size:0.92em; color:#495057; margin-top:10px; text-align:left; }
+  .hydra-table { width:100%; border-collapse:collapse; margin-top:20px; font-size:0.95em; }
+  .hydra-table th { background:#1b4332; color:white; text-align:left; padding:10px; }
+  .hydra-table td { border-bottom:1px solid #dee2e6; padding:10px; vertical-align:top; }
+</style>
+
+<!-- Add spacing so content isn’t hidden under navbar -->
+<div style="height:100px;"></div>
+
+<!-- Hero -->
+<section style="text-align:center; padding: 70px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <h1 style="margin-bottom:16px; font-size:2em;">Usage Examples</h1>
+  <p style="font-size: 1.15em; max-width: 780px; margin: 0 auto;">
+    A worked research example, plus technical notes on working with the indices and maps.
+  </p>
+</section>
+
+<div class="hydra-body">
+
+  <h2>Example use case</h2>
+  <h3>ENSO and AMO hydroclimate impacts across seasons, and the sources of SST-forced seasonal variability over North America</h3>
+
+  <p>
+    A researcher interested in hydroclimate variability over North America — and how it depends on climate modes across
+    seasons — will typically find the literature fragmented: separate analyses for winter and summer, each focused on
+    the influence of a different ocean basin, and often relying on different datasets, time periods, and methodologies.
+    This leaves open three questions:
+  </p>
+
+  <div class="hydra-q">
+    <ol>
+      <li>Does the dominant driver of variability switch from one basin to another across the seasonal cycle?</li>
+      <li>Do the teleconnections from a given basin change in strength or pattern by season?</li>
+      <li>How do the impacts over North America fit into global ocean–atmosphere patterns?</li>
+    </ol>
+  </div>
+
+  <p>
+    HYDRA removes the ambiguity in answering these by providing a single, internally consistent atlas — giving the
+    consistency, comprehensiveness, and intercomparability these questions require.
+  </p>
+
+  <h3>Step 1 — Compare modes over North America by season</h3>
+  <p>
+    Prior literature on North American hydroclimate variability appeals to both Pacific and Atlantic forcing, so a
+    natural starting point is the seasonal teleconnection maps of the four SST-based indices against PDSI over the
+    long-term period.
+  </p>
+  <ul>
+    <li>
+      <strong>ENSO</strong> — During its El Niño phase, produces a clear north–south dipole over the continent: pronounced
+      wetting across the south paired with drying farther north. The pattern peaks in DJF and is weakest in JJA, consistent
+      with ENSO's North American teleconnection acting mainly through the winter storm track and jet stream position.
+    </li>
+    <li>
+      <strong>PDO</strong> — Shows a similar dipole but with substantially greater reach; its northern drying signal extends
+      much farther poleward than ENSO's, reaching the eastern and northern Alaskan coast. This may relate to the PDO's greater
+      North Pacific expression relative to ENSO.
+    </li>
+    <li>
+      <strong>IOD</strong> — Leaves a more muted imprint. Its clearest signal emerges in SON, when the index itself is most
+      active, bringing wetting to central North America and Alaska.
+    </li>
+    <li>
+      <strong>AMO</strong> — Strongest influence also falls in SON, wetting Alaska while drying the rest of the continent.
+      This drying footprint reduces to a region constrained to Canada in JJA, and only to the Southwest in DJF.
+    </li>
+  </ul>
+
+  <h3>Step 2 — Place the signals in global context</h3>
+  <p>
+    Moving beyond North America and focusing on ENSO and AMO globally shows how differently the two shape hydroclimate
+    worldwide. ENSO's signal, strongest in SON and DJF, drives pronounced drying over northern South America, South Asia,
+    and the Indo-Australian region, alongside wetting over southern South America, southwestern North America, East Africa,
+    and the Middle East into Central Asia. The same spatial pattern persists through MAM and JJA but weakens considerably.
+    AMO, by contrast, exerts an influence of comparable magnitude across all four seasons, peaking modestly in JJA, with a
+    distinct fingerprint of wetting over the Sahel and India and drying across South America.
+  </p>
+
+  <h3>Answers to the three questions</h3>
+  <table class="hydra-table">
+    <thead>
+      <tr><th style="width:38%;">Question</th><th>What the atlas shows</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Does the dominant basin switch across the seasonal cycle?</td>
+        <td>Yes. ENSO and PDO govern the winter half of the year, producing the strongest and most coherent wetting/drying dipole over North America in DJF, while IOD and AMO take over in SON, when their own indices are most active.</td>
+      </tr>
+      <tr>
+        <td>Do teleconnections change in strength or pattern by season?</td>
+        <td>Each index keeps a broadly consistent spatial signature across seasons — ENSO's north–south dipole and AMO's Alaska-wetting/continent-drying pattern both persist — but their strength, in both extent and magnitude, varies considerably, peaking in DJF for ENSO/PDO and SON for IOD/AMO, and contracting to smaller regions away from each seasonal peak.</td>
+      </tr>
+      <tr>
+        <td>Do North American impacts fit global patterns?</td>
+        <td>Yes. The same basins that structure North American wetness and dryness leave comparable, and in some cases stronger, fingerprints elsewhere — from ENSO's drying over northern South America and South Asia to AMO's wetting over the Sahel and India. North America's response is one expression of coherent, basin-driven global teleconnections rather than an isolated pattern.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>Technical usage</h2>
+
+  <h3>Getting started</h3>
+  <p>
+    A conda environment file (<code>hydra_env.yml</code>) is provided in the repository to help install the Python package
+    dependencies. The interactive web platform provides a visual interface for exploring all teleconnection patterns in
+    terms of regression maps and agreement composites.
+  </p>
+  <pre style="text-align:left; background:#212529; color:#f8f9fa; padding:20px; border-radius:10px; overflow-x:auto;">
+conda env create -f hydra_env.yml
+conda activate hydra
+  </pre>
+
+  <h3>Interpretation notes</h3>
+  <ul>
+    <li>
+      <strong>Land masking.</strong> All CRU-based analyses are restricted to available land grid points, with ocean grid
+      points masked.
+    </li>
+    <li>
+      <strong>Different baselines across index families.</strong> When working across periods, note that SST-based indices
+      (ENSO, PDO, AMO, IOD, TPI) and HGT/SLP-based indices (NAO, NPI, AO, AAO, SAM) do not share the same baseline for the
+      longer time comparison: the SST-index baseline is 1901–2024, while the HGT/SLP baseline is 1941–2024.
+    </li>
+    <li>
+      <strong>Indices are not fully independent.</strong> ENSO, PDO, and TPI share Pacific SST variance through their
+      physical coupling, so their maps should not be read as independent signals.
+    </li>
+    <li>
+      <strong>SAM vs. AAO.</strong> These are often used interchangeably, but in keeping with literature definitions, HYDRA
+      computes SAM from sea level pressure and AAO from geopotential height.
+    </li>
+    <li>
+      <strong>Significance and masking.</strong> Stippling on teleconnection maps indicates statistically insignificant
+      regions. On agreement composites, regions below the chance-level threshold are masked, and grid cells with ambiguous
+      response — where both the top and bottom 15th percentiles of the hydroclimate field occur among a single index phase's
+      composite years — are shown in grey.
+    </li>
+  </ul>
+
+  <h3>Data availability</h3>
+  <p>
+    All gridded teleconnection maps and agreement composite datasets are freely available at Zenodo. Climate index time
+    series are available in both NetCDF-4 and CSV formats at the same repository. Input datasets are available from their
+    respective providers:
+    <a href="https://www.metoffice.gov.uk/hadobs/hadisst">HadISST</a>,
+    <a href="https://crudata.uea.ac.uk/cru/data/hrg">CRU TS</a>,
+    <a href="https://cds.climate.copernicus.eu">ERA5</a>,
+    <a href="https://www.gleam.eu">GLEAM</a>, and
+    <a href="https://psl.noaa.gov/data/gridded/data.gpcp.html">GPCP</a>.
+  </p>
+
+  <div class="hydra-note">
+    <p style="margin:0;">
+      Browse the index pages in the navigation bar above to explore teleconnection maps and agreement composites for each
+      mode, or see <a href="./methods.html">Methods</a> for the full processing pipeline.
+    </p>
+  </div>
+
+</div>
+
+<div style="height:60px;"></div>

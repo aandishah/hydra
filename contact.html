@@ -1,0 +1,97 @@
+---
+layout: default
+title: Contact | HYDRA
+---
+
+<!-- Password Gate -->
+<div id="hydra-gate" style="position:fixed; inset:0; background:#1b4332; color:white; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px;">
+  <h2 style="margin-bottom:10px;">HYDRA</h2>
+  <p style="margin-bottom:20px;">This site is password protected.</p>
+  <input id="hydra-pass" type="password" placeholder="Enter password" style="padding:10px; border-radius:6px; border:none; margin-bottom:10px; width:220px;">
+  <br>
+  <button onclick="hydraCheckPassword()" style="padding:10px 24px; border:none; border-radius:6px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Enter</button>
+  <p id="hydra-error" style="color:#ffb4b4; margin-top:10px; display:none;">Incorrect password.</p>
+</div>
+
+<script>
+(function() {
+  var HYDRA_HASH = "4da7acf795ed00da4f34f7515a2ae53aaaf080d99807dfa28ddb6d99b6f2ab1d";
+
+  function hideGate() {
+    var gate = document.getElementById('hydra-gate');
+    if (gate) gate.style.display = 'none';
+  }
+
+  if (localStorage.getItem('hydra_auth') === '1') {
+    hideGate();
+  }
+
+  async function sha256(text) {
+    var enc = new TextEncoder().encode(text);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  window.hydraCheckPassword = async function() {
+    var input = document.getElementById('hydra-pass').value;
+    var hash = await sha256(input);
+    if (hash === HYDRA_HASH) {
+      localStorage.setItem('hydra_auth', '1');
+      hideGate();
+    } else {
+      document.getElementById('hydra-error').style.display = 'block';
+    }
+  };
+
+  document.getElementById('hydra-pass').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') hydraCheckPassword();
+  });
+})();
+</script>
+
+<!-- Navbar -->
+<nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+  <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
+    <div style="color:white; font-weight:bold; font-size:1.3em;">
+      <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought & Rainfall Atlas</a>
+    </div>
+    <div>
+      <a href="./about.html" style="color:white; margin:0 15px; text-decoration:none;">About</a>
+      <a href="./methods.html" style="color:white; margin:0 15px; text-decoration:none;">Methods</a>
+      <a href="./usage.html" style="color:white; margin:0 15px; text-decoration:none;">Usage Examples</a>
+      <a href="./contact.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    </div>
+  </div>
+  <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <a href="./enso.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
+    <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
+    <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
+    <a href="./tpi.html" style="color:white; text-decoration:none; padding:0 12px;">TPI</a><span style="color:#95d5b2;">|</span>
+    <a href="./aao.html" style="color:white; text-decoration:none; padding:0 12px;">AAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./ao.html" style="color:white; text-decoration:none; padding:0 12px;">AO</a><span style="color:#95d5b2;">|</span>
+    <a href="./sam.html" style="color:white; text-decoration:none; padding:0 12px;">SAM</a><span style="color:#95d5b2;">|</span>
+    <a href="./nao.html" style="color:white; text-decoration:none; padding:0 12px;">NAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./npi.html" style="color:white; text-decoration:none; padding:0 12px;">NPI</a>
+  </div>
+</nav>
+
+<style>
+  .hydra-nav a {
+    transition: text-shadow 0.2s ease, font-weight 0.2s ease;
+  }
+  .hydra-nav a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
+  }
+</style>
+
+<!-- Add spacing so content isn’t hidden under navbar -->
+<div style="height:100px;"></div>
+
+<!-- Contact Section -->
+<section style="padding: 80px 20px; text-align:center;">
+  <h2>🙌 Contributing & Contact</h2>
+  <p>Contributions are welcome! Submit a pull request or open an issue.</p>
+  <p>For questions, email <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a>.</p>
+</section>

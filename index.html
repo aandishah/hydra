@@ -50,87 +50,366 @@ title: Hydrological Drought & Rainfall Atlas
 </script>
 
 <!-- Navbar -->
-<nav style="position:fixed; top:0; left:0; right:0; background:#1b4332; padding:12px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-  <div style="color:white; font-weight:bold; font-size:1.3em;">
-    <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought & Rainfall Atlas</a>
+<nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+  <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
+    <div style="color:white; font-weight:bold; font-size:1.3em;">
+      <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought &amp; Rainfall Atlas</a>
+    </div>
+    <div>
+      <a href="./about.html" style="color:white; margin:0 15px; text-decoration:none;">About</a>
+      <a href="./methods.html" style="color:white; margin:0 15px; text-decoration:none;">Methods</a>
+      <a href="./usage.html" style="color:white; margin:0 15px; text-decoration:none;">Usage Examples</a>
+      <a href="./contact.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    </div>
   </div>
-  <div>
-    <a href="./enso.html" style="color:white; margin:0 15px; text-decoration:none;">ENSO</a>
-    <a href="./pdo.html" style="color:white; margin:0 15px; text-decoration:none;">PDO</a>
-    <a href="./iod.html" style="color:white; margin:0 15px; text-decoration:none;">IOD</a>
-    <a href="./amo.html" style="color:white; margin:0 15px; text-decoration:none;">AMO</a>
-    <a href="./tpi.html" style="color:white; margin:0 15px; text-decoration:none;">TPI</a>
-    <a href="./aao.html" style="color:white; margin:0 15px; text-decoration:none;">AAO</a>
-    <a href="./ao.html" style="color:white; margin:0 15px; text-decoration:none;">AO</a>
-    <a href="./sam.html" style="color:white; margin:0 15px; text-decoration:none;">SAM</a>
-    <a href="./nao.html" style="color:white; margin:0 15px; text-decoration:none;">NAO</a>
-    <a href="./npi.html" style="color:white; margin:0 15px; text-decoration:none;">NPI </a>
+  <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <a href="./enso.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
+    <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
+    <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
+    <a href="./tpi.html" style="color:white; text-decoration:none; padding:0 12px;">TPI</a><span style="color:#95d5b2;">|</span>
+    <a href="./aao.html" style="color:white; text-decoration:none; padding:0 12px;">AAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./ao.html" style="color:white; text-decoration:none; padding:0 12px;">AO</a><span style="color:#95d5b2;">|</span>
+    <a href="./sam.html" style="color:white; text-decoration:none; padding:0 12px;">SAM</a><span style="color:#95d5b2;">|</span>
+    <a href="./nao.html" style="color:white; text-decoration:none; padding:0 12px;">NAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./npi.html" style="color:white; text-decoration:none; padding:0 12px;">NPI</a>
   </div>
 </nav>
 
+<style>
+  .hydra-nav a {
+    transition: text-shadow 0.2s ease, font-weight 0.2s ease;
+  }
+  .hydra-nav a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
+  }
+
+  .hydra-section { padding: 60px 20px; max-width: 1000px; margin: auto; }
+  .hydra-section h2 { text-align:center; color:#1b4332; margin-bottom:10px; }
+  .hydra-sub { text-align:center; color:#495057; max-width:640px; margin:0 auto 34px auto; }
+
+  /* At-a-glance stat strip */
+  .hydra-stats {
+    display:grid; grid-template-columns:repeat(auto-fit, minmax(150px, 1fr));
+    gap:16px; margin:0 auto 30px auto;
+  }
+  .hydra-stat {
+    background:white; border-radius:10px; padding:22px 14px; text-align:center;
+    border:1px solid #e3e8e5;
+  }
+  .hydra-stat .n { font-size:2em; font-weight:bold; color:#1b4332; line-height:1.1; }
+  .hydra-stat .l { font-size:0.9em; color:#495057; margin-top:6px; }
+
+  /* Index picker grid */
+  .hydra-grid { display:grid; grid-template-columns:repeat(auto-fit, minmax(230px, 1fr)); gap:18px; }
+  .hydra-index-card {
+    display:block; background:#f8f9fa; border-radius:10px; padding:20px;
+    text-decoration:none; color:inherit; border:1px solid #e3e8e5;
+    transition: box-shadow 0.2s ease, transform 0.2s ease, border-color 0.2s ease;
+  }
+  .hydra-index-card:hover {
+    box-shadow:0 0 0 2px #95d5b2, 0 6px 18px rgba(27,67,50,0.15);
+    border-color:#95d5b2; transform:translateY(-2px);
+  }
+  .hydra-index-card .abbr { font-size:1.25em; font-weight:bold; color:#1b4332; }
+  .hydra-index-card .full { font-size:0.95em; color:#2d6a4f; margin:4px 0 10px 0; }
+  .hydra-index-card .meta { font-size:0.82em; color:#6c757d; }
+  .hydra-tag {
+    display:inline-block; font-size:0.72em; font-weight:bold; letter-spacing:0.4px;
+    text-transform:uppercase; padding:3px 8px; border-radius:20px; margin-bottom:10px;
+  }
+  .tag-ocean { background:#d8f3dc; color:#1b4332; }
+  .tag-atmos { background:#dbe7f3; color:#1d3557; }
+
+  /* Steps */
+  .hydra-steps { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:20px; }
+  .hydra-step { background:white; border-radius:10px; padding:24px; border:1px solid #e3e8e5; }
+  .hydra-step .num {
+    display:inline-flex; align-items:center; justify-content:center;
+    width:32px; height:32px; border-radius:50%; background:#1b4332; color:white;
+    font-weight:bold; margin-bottom:12px;
+  }
+  .hydra-step h3 { margin:0 0 8px 0; color:#1b4332; }
+  .hydra-step p { margin:0; font-size:0.95em; color:#495057; }
+
+  /* Table */
+  .hydra-table { width:100%; border-collapse:collapse; font-size:0.95em; }
+  .hydra-table th { background:#1b4332; color:white; text-align:left; padding:12px; }
+  .hydra-table td { border-bottom:1px solid #dee2e6; padding:12px; vertical-align:top; }
+  .hydra-table tr:nth-child(even) td { background:#f8f9fa; }
+
+  /* Access cards */
+  .hydra-access-card {
+    background:white; border-radius:10px; padding:24px; border:1px solid #e3e8e5;
+    transition: box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .hydra-access-card:hover { box-shadow:0 0 0 2px #95d5b2; border-color:#95d5b2; }
+  .hydra-access-card h3 { margin-top:0; color:#1b4332; }
+  .hydra-todo { color:#b06000; font-size:0.85em; }
+
+  /* Footer */
+  .hydra-footer { background:#1b4332; color:#d8f3dc; padding:50px 20px 30px 20px; }
+  .hydra-footer a { color:#95d5b2; }
+  .hydra-footer-inner { max-width:1000px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:30px; }
+  .hydra-footer h4 { color:white; margin:0 0 10px 0; }
+  .hydra-footer p { margin:0 0 8px 0; font-size:0.92em; line-height:1.6; }
+  .hydra-footer-bottom {
+    max-width:1000px; margin:34px auto 0 auto; padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.15); font-size:0.85em; text-align:center;
+  }
+</style>
+
 <!-- Add spacing so content isn’t hidden under navbar -->
-<div style="height:70px;"></div>
+<div style="height:100px;"></div>
 
 <!-- Banner Section -->
-<section style="text-align:center; padding: 80px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
-  <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
-    An online archive for exploring the links between different climate indices and hydroclimate fields. 
-    Analyze teleconnection maps from regressions and agreement composites to visualize the connections between different modes of climate variability and global drought and rainfall patterns.
+<section style="text-align:center; padding: 80px 20px 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <p style="font-size: 1.2em; max-width: 720px; margin: 0 auto 26px auto;">
+    An online archive for exploring the links between different climate indices and hydroclimate fields.
+    Analyze teleconnection maps from regressions and agreement composites to visualize the connections between
+    different modes of climate variability and global drought and rainfall patterns.
+  </p>
+  <a href="#indices" style="display:inline-block; background:#95d5b2; color:#1b4332; font-weight:bold; padding:12px 28px; border-radius:6px; text-decoration:none;">Browse the atlas</a>
+  <a href="./about.html" style="display:inline-block; border:1px solid #95d5b2; color:white; font-weight:bold; padding:12px 28px; border-radius:6px; text-decoration:none; margin-left:10px;">About HYDRA</a>
+</section>
+
+<!-- Hero figure -->
+<section class="hydra-section" style="text-align:center;">
+  <img src="./figures/Flowchart_figures.png" alt="HYDRA data processing flowchart"
+       style="max-width:85%; border-radius:10px; box-shadow:0 4px 16px rgba(0,0,0,0.10);">
+  <p style="max-width:700px; margin:18px auto 0 auto; font-size:0.95em; color:#495057;">
+    Data processing steps for the production of HYDRA — from input datasets through index validation to
+    teleconnection maps and agreement composites. See <a href="./methods.html">Methods</a> for full detail.
   </p>
 </section>
 
-<!-- Features Section -->
-<section style="padding: 60px 20px; max-width: 1000px; margin: auto; text-align:center;">
-  <h2>Key Features</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 30px; text-align:left;">
-    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
-      <h3>Teleconnection Maps</h3>
-      <p>Capture teleconnections from seasonal and interannual regressions between climate indices and hydroclimate anomalies.</p>
+<!-- Index picker grid -->
+<section class="hydra-section" id="indices" style="background:#ffffff;">
+  <h2>Explore by climate index</h2>
+  <p class="hydra-sub">
+    Ten major ocean and atmospheric modes, each with seasonal teleconnection maps and agreement composites
+    for PDSI, soil moisture, precipitation, and temperature.
+  </p>
+
+  <h3 style="color:#2d6a4f; margin-bottom:14px;">Ocean-based indices <span style="font-weight:normal; font-size:0.8em; color:#6c757d;">— derived from sea surface temperature (HadISST 1.1)</span></h3>
+  <div class="hydra-grid" style="margin-bottom:40px;">
+    <a class="hydra-index-card" href="./enso.html">
+      <span class="hydra-tag tag-ocean">Ocean</span>
+      <div class="abbr">ENSO</div>
+      <div class="full">El Niño–Southern Oscillation</div>
+      <div class="meta">1901–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./pdo.html">
+      <span class="hydra-tag tag-ocean">Ocean</span>
+      <div class="abbr">PDO</div>
+      <div class="full">Pacific Decadal Oscillation</div>
+      <div class="meta">1901–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./amo.html">
+      <span class="hydra-tag tag-ocean">Ocean</span>
+      <div class="abbr">AMO</div>
+      <div class="full">Atlantic Multidecadal Oscillation</div>
+      <div class="meta">1901–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./iod.html">
+      <span class="hydra-tag tag-ocean">Ocean</span>
+      <div class="abbr">IOD</div>
+      <div class="full">Indian Ocean Dipole</div>
+      <div class="meta">1901–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./tpi.html">
+      <span class="hydra-tag tag-ocean">Ocean</span>
+      <div class="abbr">TPI</div>
+      <div class="full">Tripole Index</div>
+      <div class="meta">1901–2024 · 1981–2024</div>
+    </a>
+  </div>
+
+  <h3 style="color:#2d6a4f; margin-bottom:14px;">Atmospheric circulation-based indices <span style="font-weight:normal; font-size:0.8em; color:#6c757d;">— derived from ERA5 geopotential height &amp; sea level pressure</span></h3>
+  <div class="hydra-grid">
+    <a class="hydra-index-card" href="./ao.html">
+      <span class="hydra-tag tag-atmos">Atmosphere</span>
+      <div class="abbr">AO</div>
+      <div class="full">Arctic Oscillation</div>
+      <div class="meta">HGT · 1941–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./aao.html">
+      <span class="hydra-tag tag-atmos">Atmosphere</span>
+      <div class="abbr">AAO</div>
+      <div class="full">Antarctic Oscillation</div>
+      <div class="meta">HGT · 1941–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./nao.html">
+      <span class="hydra-tag tag-atmos">Atmosphere</span>
+      <div class="abbr">NAO</div>
+      <div class="full">North Atlantic Oscillation</div>
+      <div class="meta">SLP · 1941–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./npi.html">
+      <span class="hydra-tag tag-atmos">Atmosphere</span>
+      <div class="abbr">NPI</div>
+      <div class="full">North Pacific Index</div>
+      <div class="meta">SLP · 1941–2024 · 1981–2024</div>
+    </a>
+    <a class="hydra-index-card" href="./sam.html">
+      <span class="hydra-tag tag-atmos">Atmosphere</span>
+      <div class="abbr">SAM</div>
+      <div class="full">Southern Annular Mode</div>
+      <div class="meta">SLP · 1941–2024 · 1981–2024</div>
+    </a>
+  </div>
+</section>
+
+<!-- How to explore -->
+<section style="background:#e9f5ec;">
+  <div class="hydra-section">
+    <h2>How to explore</h2>
+    <p class="hydra-sub">Three choices get you to any map in the atlas.</p>
+    <div class="hydra-steps">
+      <div class="hydra-step">
+        <div class="num">1</div>
+        <h3>Pick an index</h3>
+        <p>Choose one of the ten ocean or atmospheric modes from the grid above or the navigation bar.</p>
+      </div>
+      <div class="hydra-step">
+        <div class="num">2</div>
+        <h3>Pick a season and period</h3>
+        <p>DJF, MAM, JJA, or SON — over the long-term, intermediate-term, or short-term analysis window.</p>
+      </div>
+      <div class="hydra-step">
+        <div class="num">3</div>
+        <h3>Pick a product</h3>
+        <p><strong>Teleconnection maps</strong> show the average linear relationship via regression. <strong>Agreement composites</strong> show where an index's extreme years coincide with hydroclimate extremes.</p>
+      </div>
     </div>
-    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
-      <h3>Flexible Inputs</h3>
-      <p>Works seamlessly with <code>xarray</code> seasonal datasets (DJF, MAM, JJA, SON).</p>
+    <p style="text-align:center; margin-top:26px;">
+      New to the atlas? Start with the <a href="./usage.html">worked example</a> comparing ENSO and AMO over North America.
+    </p>
+  </div>
+</section>
+
+<!-- Coverage table -->
+<section class="hydra-section">
+  <h2>Coverage at a glance</h2>
+  <p class="hydra-sub">
+    Which indices and hydroclimate products are available over each analysis period. Note that SST-based and
+    HGT/SLP-based indices do not share a baseline outside the short-term window.
+  </p>
+  <div style="overflow-x:auto;">
+    <table class="hydra-table">
+      <thead>
+        <tr>
+          <th>Period</th>
+          <th>Years</th>
+          <th>Indices available</th>
+          <th>Hydroclimate fields</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Long-term (LT)</strong></td>
+          <td>1901–2024</td>
+          <td>ENSO, PDO, AMO, IOD, TPI <span style="color:#6c757d;">(SST-based)</span></td>
+          <td>CRU: precipitation, temperature, PDSI</td>
+        </tr>
+        <tr>
+          <td><strong>Intermediate-term (IT)</strong></td>
+          <td>1941–2024</td>
+          <td>AO, AAO, NAO, NPI, SAM <span style="color:#6c757d;">(HGT/SLP-based)</span></td>
+          <td>CRU: precipitation, temperature, PDSI</td>
+        </tr>
+        <tr>
+          <td><strong>Short-term (ST)</strong></td>
+          <td>1981–2024</td>
+          <td>All ten indices</td>
+          <td>CRU + GLEAM soil moisture + GPCP precipitation</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p style="text-align:center; margin-top:18px; font-size:0.92em; color:#495057;">
+    All products are provided for four seasons: DJF, MAM, JJA, and SON.
+  </p>
+</section>
+
+<!-- Data access -->
+<section style="background:#f8f9fa;">
+  <div class="hydra-section">
+    <h2>Data access</h2>
+    <p class="hydra-sub">
+      All HYDRA products are freely available. Gridded fields are provided in NetCDF-4; index time series and
+      extreme states are additionally provided in CSV.
+    </p>
+
+    <!-- What's in the archive -->
+    <div class="hydra-stats">
+      <div class="hydra-stat"><div class="n">10</div><div class="l">Climate indices</div></div>
+      <div class="hydra-stat"><div class="n">4</div><div class="l">Seasons</div></div>
+      <div class="hydra-stat"><div class="n">3</div><div class="l">Analysis periods</div></div>
+      <div class="hydra-stat"><div class="n">4</div><div class="l">Hydroclimate variables</div></div>
     </div>
-    <div style="background:#f8f9fa; padding:20px; border-radius:10px;">
-      <h3>Custom Plotting</h3>
-      <p>Seasonal maps and multi-panel plots with clean color schemes.</p>
+
+    <div class="hydra-grid">
+      <div class="hydra-access-card">
+        <h3>📦 Zenodo archive</h3>
+        <p>The complete data product: index time series, teleconnection maps, and agreement composites, organized by index, season, variable, and period.</p>
+        <p class="hydra-todo">TODO: add Zenodo DOI link</p>
+      </div>
+      <div class="hydra-access-card">
+        <h3>💻 GitHub repository</h3>
+        <p>All Python code used to compute the indices, perform regression and agreement composite analyses, and generate figures.</p>
+        <p class="hydra-todo">TODO: add GitHub repository link</p>
+      </div>
+      <div class="hydra-access-card">
+        <h3>🗂️ Archive structure</h3>
+        <p style="font-family:monospace; font-size:0.85em; line-height:1.8; color:#495057;">
+          /indices/<br>
+          /indices/validation/<br>
+          /teleconnections/<br>
+          /agreements/
+        </p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- Example Section -->
-<section style="background:#e9f5ec; padding: 60px 20px; text-align:center;">
-  <h2> Method </h2>
-  <h3> HYdrological Drought & Rainfall Atlas </h3>
-  <img src="./figures/Flowchart_figures.png" alt="Example Map" style="max-width:80%; border-radius:10px; margin:20px auto;">
-  <p style="max-width: 700px; margin: 0 auto; font-size: 1.1em;">
-    Data processing steps for the production of HYDRA.
-  </p>
-</section>
-
-<!-- Quick Start Section -->
-<section style="padding: 60px 20px; max-width: 900px; margin: auto; text-align:center;">
+<!-- Quick Start -->
+<section class="hydra-section">
   <h2>🚀 Quick Start</h2>
-  <pre style="text-align:left; background:#212529; color:#f8f9fa; padding:20px; border-radius:10px; overflow-x:auto;">
-git clone https://github.com/yourusername/hydra.git
+  <p class="hydra-sub">
+    A conda environment file is provided to install the Python dependencies.
+  </p>
+  <pre style="text-align:left; background:#212529; color:#f8f9fa; padding:22px; border-radius:10px; overflow-x:auto;">
+# TODO: replace with the HYDRA repository URL
+git clone https://github.com/&lt;org&gt;/hydra.git
 cd hydra
-pip install -r requirements.txt
+
+conda env create -f hydra_env.yml
+conda activate hydra
+
 jupyter notebook examples/enso_pdsi_regression.ipynb
   </pre>
 </section>
 
-<!-- Citation Section -->
-<section style="background:#f8f9fa; padding: 60px 20px; text-align:center;">
-  <h2>📜 Citation</h2>
-  <p>If you use HYDRA in your research, please cite:</p>
-  <blockquote style="max-width:700px; margin:20px auto; font-style:italic;">
-    Samara, A., et al. In Prep. The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes
-  </blockquote>
-</section>
-
-<!-- Contact Section -->
-<section style="padding: 60px 20px; text-align:center;">
-  <h2>🙌 Contributing & Contact</h2>
-  <p>Contributions are welcome! Submit a pull request or open an issue.</p>
-  <p>For questions, email <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a>.</p>
-</section>
+<!-- Footer -->
+<footer class="hydra-footer">
+  <div class="hydra-footer-inner">
+    <div>
+      <h4>Explore</h4>
+      <p><a href="./about.html">About</a> · <a href="./methods.html">Methods</a></p>
+      <p><a href="./usage.html">Usage Examples</a> · <a href="./contact.html">Contact</a></p>
+    </div>
+    <div>
+      <h4>Citation</h4>
+      <p style="font-style:italic;">Samara, A., et al. In Prep. The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes.</p>
+    </div>
+    <div>
+      <h4>Funding</h4>
+      <p>Supported by the National Science Foundation under Grants AGS-2127684 and AGS-2101214.</p>
+    </div>
+  </div>
+  <div class="hydra-footer-bottom">
+    <p style="margin:0;">Contributions welcome — submit a pull request or open an issue. Questions: <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a></p>
+  </div>
+</footer>

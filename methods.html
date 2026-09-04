@@ -1,0 +1,323 @@
+---
+layout: default
+title: Methods | HYDRA
+---
+
+<!-- Password Gate -->
+<div id="hydra-gate" style="position:fixed; inset:0; background:#1b4332; color:white; z-index:9999; display:flex; align-items:center; justify-content:center; flex-direction:column; text-align:center; padding:20px;">
+  <h2 style="margin-bottom:10px;">HYDRA</h2>
+  <p style="margin-bottom:20px;">This site is password protected.</p>
+  <input id="hydra-pass" type="password" placeholder="Enter password" style="padding:10px; border-radius:6px; border:none; margin-bottom:10px; width:220px;">
+  <br>
+  <button onclick="hydraCheckPassword()" style="padding:10px 24px; border:none; border-radius:6px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Enter</button>
+  <p id="hydra-error" style="color:#ffb4b4; margin-top:10px; display:none;">Incorrect password.</p>
+</div>
+
+<script>
+(function() {
+  var HYDRA_HASH = "4da7acf795ed00da4f34f7515a2ae53aaaf080d99807dfa28ddb6d99b6f2ab1d";
+
+  function hideGate() {
+    var gate = document.getElementById('hydra-gate');
+    if (gate) gate.style.display = 'none';
+  }
+
+  if (localStorage.getItem('hydra_auth') === '1') {
+    hideGate();
+  }
+
+  async function sha256(text) {
+    var enc = new TextEncoder().encode(text);
+    var buf = await crypto.subtle.digest('SHA-256', enc);
+    return Array.from(new Uint8Array(buf)).map(function(b){ return b.toString(16).padStart(2,'0'); }).join('');
+  }
+
+  window.hydraCheckPassword = async function() {
+    var input = document.getElementById('hydra-pass').value;
+    var hash = await sha256(input);
+    if (hash === HYDRA_HASH) {
+      localStorage.setItem('hydra_auth', '1');
+      hideGate();
+    } else {
+      document.getElementById('hydra-error').style.display = 'block';
+    }
+  };
+
+  document.getElementById('hydra-pass').addEventListener('keydown', function(e) {
+    if (e.key === 'Enter') hydraCheckPassword();
+  });
+})();
+</script>
+
+<!-- Navbar -->
+<nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+  <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
+    <div style="color:white; font-weight:bold; font-size:1.3em;">
+      <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought &amp; Rainfall Atlas</a>
+    </div>
+    <div>
+      <a href="./about.html" style="color:white; margin:0 15px; text-decoration:none;">About</a>
+      <a href="./methods.html" style="color:white; margin:0 15px; text-decoration:none;">Methods</a>
+      <a href="./usage.html" style="color:white; margin:0 15px; text-decoration:none;">Usage Examples</a>
+      <a href="./contact.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    </div>
+  </div>
+  <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <a href="./enso.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
+    <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
+    <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
+    <a href="./tpi.html" style="color:white; text-decoration:none; padding:0 12px;">TPI</a><span style="color:#95d5b2;">|</span>
+    <a href="./aao.html" style="color:white; text-decoration:none; padding:0 12px;">AAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./ao.html" style="color:white; text-decoration:none; padding:0 12px;">AO</a><span style="color:#95d5b2;">|</span>
+    <a href="./sam.html" style="color:white; text-decoration:none; padding:0 12px;">SAM</a><span style="color:#95d5b2;">|</span>
+    <a href="./nao.html" style="color:white; text-decoration:none; padding:0 12px;">NAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./npi.html" style="color:white; text-decoration:none; padding:0 12px;">NPI</a>
+  </div>
+</nav>
+
+<style>
+  .hydra-nav a {
+    transition: text-shadow 0.2s ease, font-weight 0.2s ease;
+  }
+  .hydra-nav a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
+  }
+  .hydra-body { max-width: 900px; margin: auto; padding: 0 20px; line-height: 1.7; }
+  .hydra-body h2 { margin-top: 50px; color:#1b4332; }
+  .hydra-body h3 { margin-top: 32px; color:#2d6a4f; }
+  .hydra-table { width:100%; border-collapse:collapse; margin-top:20px; font-size:0.95em; }
+  .hydra-table th { background:#1b4332; color:white; text-align:left; padding:10px; }
+  .hydra-table td { border-bottom:1px solid #dee2e6; padding:10px; vertical-align:top; }
+  .hydra-figure { margin:30px 0; text-align:center; }
+  .hydra-figure img { max-width:90%; border-radius:10px; }
+  .hydra-figure figcaption { font-size:0.92em; color:#495057; margin-top:10px; text-align:left; }
+  .hydra-note { background:#e9f5ec; padding:20px; border-radius:10px; margin:30px 0; }
+</style>
+
+<!-- Add spacing so content isn’t hidden under navbar -->
+<div style="height:100px;"></div>
+
+<!-- Hero -->
+<section style="text-align:center; padding: 70px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <h1 style="margin-bottom:16px; font-size:2em;">Methods</h1>
+  <p style="font-size: 1.15em; max-width: 780px; margin: 0 auto;">
+    How HYDRA computes standardized climate indices and links them to hydroclimate fields
+    through regression teleconnection maps and agreement composites.
+  </p>
+</section>
+
+<div class="hydra-body">
+
+  <h2>Overview</h2>
+  <p>
+    HYDRA is an open-source standardized framework for computing climate variability indices and their influence on
+    hydroclimate. Index definitions and computation methods are applied uniformly across datasets, removing
+    inconsistencies that commonly arise when indices are recalculated using different conventions, software
+    implementations, or reference intervals. Building on these indices, teleconnection maps quantify the statistical
+    association between each climate index and hydroclimate variables of interest across the study domain. These maps
+    are produced with a consistent processing pipeline across all indices, enabling direct comparison of teleconnection
+    patterns across datasets, spatial resolutions, and time periods.
+  </p>
+  <p>
+    HYDRA is intended as a working resource rather than an additional set of stationary datasets. Reproducible code is
+    provided that can be applied to any gridded hydroclimate product and any user-defined analysis period and baseline,
+    supporting future assessments and updates as new datasets become available.
+  </p>
+
+  <figure class="hydra-figure">
+    <img src="./figures/Flowchart_figures.png" alt="Flowchart of HYDRA data processing steps">
+    <figcaption><strong>Figure 1.</strong> Flowchart showing each of the data processing steps for the production of HYDRA.</figcaption>
+  </figure>
+
+  <h2>1. Input datasets</h2>
+  <p>
+    All input datasets used to compute the climate indices were obtained from publicly accessible repositories.
+    Data availability determines the long-term (LT), intermediate-term (IT), and short-term (ST) start dates of
+    1901, 1941, and 1981 respectively.
+  </p>
+
+  <table class="hydra-table">
+    <thead>
+      <tr><th>Field</th><th>Dataset</th><th>Coverage</th><th>Used for</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Sea surface temperature</td>
+        <td>HadISST 1.1 (Rayner et al., 2003)</td>
+        <td>1871–2024</td>
+        <td>Ocean-based indices (LT, ST)</td>
+      </tr>
+      <tr>
+        <td>Geopotential height &amp; sea level pressure</td>
+        <td>ERA5 (Hersbach et al., 2020; Bell et al., 2021)</td>
+        <td>1940–present</td>
+        <td>Atmospheric circulation indices (IT, ST)</td>
+      </tr>
+      <tr>
+        <td>Precipitation, temperature, PDSI</td>
+        <td>CRU TS v4.09 (Harris et al., 2020; van der Schrier et al., 2011, 2013)</td>
+        <td>1901–2024</td>
+        <td>Hydroclimate fields (LT, IT, ST)</td>
+      </tr>
+      <tr>
+        <td>Soil moisture</td>
+        <td>GLEAM v4.2a (Miralles et al., 2025)</td>
+        <td>1980–near present</td>
+        <td>Hydroclimate fields (ST)</td>
+      </tr>
+      <tr>
+        <td>Precipitation (land &amp; ocean)</td>
+        <td>GPCP v2.3 (Adler et al., 2018)</td>
+        <td>1979–present</td>
+        <td>Hydroclimate fields (ST)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h2>2. Validation and systematization of climate indices</h2>
+  <p>
+    HYDRA focuses on ten of the most widely used climate indices derived from ocean and atmospheric circulation
+    fields, selected for their well-established influence on hydroclimate variability. Using published definitions,
+    each index was independently validated against externally published index values before being recomputed from
+    gridded SST and reanalysis datasets. The result is a collection of indices that can be used consistently for
+    intercomparison, rather than relying on externally published values computed from differing source data, methods,
+    time periods, or reference intervals.
+  </p>
+
+  <table class="hydra-table">
+    <thead>
+      <tr><th>Index family</th><th>Indices</th><th>Source field</th><th>Analysis periods</th></tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Ocean-based</td>
+        <td>ENSO, PDO, AMO, IOD, TPI</td>
+        <td>HadISST 1.1 SST</td>
+        <td>LT (1901–2024), ST (1981–2024)</td>
+      </tr>
+      <tr>
+        <td>Atmospheric circulation-based</td>
+        <td>AO, AAO (HGT); NAO, NPI, SAM (SLP)</td>
+        <td>ERA5 HGT &amp; SLP</td>
+        <td>IT (1941–2024), ST (1981–2024)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;">
+    The ST period is the only interval over which all ten indices are available. Start dates for LT and IT were set by
+    the longest record available for each respective dataset, while ST was chosen both to provide a common interval
+    across all ten indices and to align with the satellite era, over which the underlying data are most reliable.
+    All indices were computed monthly and then aggregated to seasonal means for DJF, MAM, JJA, and SON.
+  </p>
+  <p>
+    For validation, each index was computed using the same input data, time period, methodology, and base climatology
+    as its published reference. After validation, systematized versions of each index were constructed using the same
+    methodology but with consistent datasets, time periods, and climatological baselines for a common framework across
+    all HYDRA products.
+  </p>
+
+  <h3>Validation result</h3>
+  <p>
+    Pearson correlation coefficients between the reconstructed and reference index series exceed
+    <strong>r = 0.98 (p &lt; 0.05) for all ten indices</strong>, confirming that the computation methods correctly
+    reproduce the published indices. Minor differences reflect re-gridding methods, dataset versions, and EOF software
+    packages rather than errors in index methodology.
+  </p>
+
+  <h2>3. Hydroclimate teleconnection maps (linear regression)</h2>
+  <p>
+    At each grid point, regression coefficients — expressed in units of hydroclimate anomaly per standard deviation of
+    the index — and Pearson correlation coefficients are computed between each climate index and each hydroclimate
+    field (and the SST field where applicable) for each season. Statistical significance is assessed with a two-tailed
+    t-test at the 95% confidence level (p &lt; 0.025).
+  </p>
+  <p>Regressions and correlations are computed separately for each period:</p>
+  <ul>
+    <li><strong>Long-term (1901–2024)</strong> — SST-based indices against CRU hydroclimate variables.</li>
+    <li><strong>Intermediate-term (1941–2024)</strong> — HGT/SLP-based indices against CRU hydroclimate variables.</li>
+    <li><strong>Short-term (1981–2024)</strong> — all ten indices against CRU, GLEAM, and GPCP hydroclimate variables.</li>
+  </ul>
+
+  <h2>4. Identification of extreme index states</h2>
+  <p>
+    For each of the ten climate indices and each season, years are ranked by index magnitude, and the upper and lower
+    15th percentiles are used to identify extreme positive and negative phase years respectively. DJF years are assigned
+    to the January–February calendar year.
+  </p>
+
+  <h2>5. Agreement composite analysis</h2>
+  <p>
+    To characterize spatial covariability between the large-scale indices and regional hydroclimate anomalies, HYDRA
+    uses an agreement composite framework based on the overlap between an index's extreme years and extreme hydroclimate
+    states. Unlike a regression or correlation coefficient, which summarizes an average linear relationship, this
+    framework identifies <em>where</em> an index's extreme-phase years align with hydroclimate extremes.
+  </p>
+  <p>The procedure for each index:</p>
+  <ol>
+    <li>Select the years ranked in the upper and lower 15th percentiles of the index.</li>
+    <li>Rank the hydroclimate field in time at each grid cell and select its upper and lower 15th percentiles.</li>
+    <li>Compute the <strong>agreement count</strong>: the number of years of overlap between the index's extreme-phase years and the grid cell's extreme hydroclimate years.</li>
+    <li>Evaluate all four phase combinations separately (index-positive/field-high, index-positive/field-low, index-negative/field-high, index-negative/field-low).</li>
+  </ol>
+  <p>
+    Areas with high agreement show where hydroclimate extremes robustly align with the index's extreme-phase years.
+  </p>
+
+  <h3>Chance-level thresholds and masking</h3>
+  <p>
+    To account for agreement counts arising by chance, random-chance thresholds are estimated using a hypergeometric
+    distribution parameterized by the total number of years (N) and the sample sizes of the top and bottom 15th
+    percentile years. These define fixed thresholds for categorizing agreement strength (none, low, medium, high),
+    computed separately for LT, IT, and ST.
+  </p>
+
+  <table class="hydra-table">
+    <thead>
+      <tr><th>Period</th><th>N (years)</th><th>K = n (15% extreme years)</th><th>Overlap by chance</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1902–2024 (LT)</td><td>123</td><td>18</td><td>3</td></tr>
+      <tr><td>1940–2024 (IT)</td><td>85</td><td>13</td><td>2</td></tr>
+      <tr><td>1981–2024 (ST)</td><td>44</td><td>7</td><td>1</td></tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:16px;">
+    Areas showing agreement above the defined thresholds are retained; those below are masked out. Regions exhibiting
+    conflicting signals are also masked — these are grid cells where, for a given index phase, both the top and bottom
+    15th percentile of the hydroclimate field appear among the composite years, indicating no coherent directional
+    hydroclimate response.
+  </p>
+
+  <h2>Data records</h2>
+  <p>
+    All products are provided as gridded fields in NetCDF-4 format, with coordinate variables for latitude, longitude,
+    and time, plus variable metadata including units, long-name attributes, and missing values flagged as NaN. Index
+    time series and extreme states are additionally provided in CSV.
+  </p>
+  <table class="hydra-table">
+    <thead>
+      <tr><th>Directory</th><th>Contents</th></tr>
+    </thead>
+    <tbody>
+      <tr><td><code>/indices/</code></td><td>Computed climate index time series (monthly and seasonal, all periods)</td></tr>
+      <tr><td><code>/indices/validation/</code></td><td>Index series correlated against published references for validation</td></tr>
+      <tr><td><code>/teleconnections/</code></td><td>Teleconnection maps: LT (SST-based indices), IT (HGT/SLP-based indices), ST (all indices) vs. hydroclimate fields</td></tr>
+      <tr><td><code>/agreements/</code></td><td>Agreement composite files for LT, IT, and ST</td></tr>
+    </tbody>
+  </table>
+
+  <div class="hydra-note">
+    <p style="margin:0;">
+      A conda environment file (<code>hydra_env.yml</code>) is provided in the repository to help install the Python
+      package dependencies. See <a href="./usage.html">Usage Examples</a> for worked research applications and
+      interpretation caveats.
+    </p>
+  </div>
+
+</div>
+
+<div style="height:60px;"></div>
