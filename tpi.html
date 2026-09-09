@@ -1,32 +1,330 @@
 ---
 layout: default
-title: TPI | HYDRA 
+title: TPI
 ---
 
+
 <!-- Navbar -->
-<nav style="position:fixed; top:0; left:0; right:0; background:#1b4332; padding:12px 40px; display:flex; justify-content:space-between; align-items:center; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
-  <div style="color:white; font-weight:bold; font-size:1.3em;">
-    <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought & Rainfall Atlas</a>
+<nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
+  <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
+    <div style="color:white; font-weight:bold; font-size:1.3em;">
+      <a href="./" style="color:white; text-decoration:none;">HYDRA | HYdrological Drought &amp; Rainfall Atlas</a>
+    </div>
+    <div>
+      <a href="./about.html" style="color:white; margin:0 15px; text-decoration:none;">About</a>
+      <a href="./methods.html" style="color:white; margin:0 15px; text-decoration:none;">Methods</a>
+      <a href="./usage.html" style="color:white; margin:0 15px; text-decoration:none;">Usage Examples</a>
+      <a href="./contact.html" style="color:white; margin:0 15px; text-decoration:none;">Contact</a>
+    </div>
   </div>
-  <div>
-    <a href="./enso.html" style="color:white; margin:0 15px; text-decoration:none;">ENSO</a>
-    <a href="./pdo.html" style="color:white; margin:0 15px; text-decoration:none;">PDO</a>
-    <a href="./iod.html" style="color:white; margin:0 15px; text-decoration:none;">IOD</a>
-    <a href="./amo.html" style="color:white; margin:0 15px; text-decoration:none;">AMO</a>
-    <a href="./tpi.html" style="color:white; margin:0 15px; text-decoration:none;">TPI</a>
-    <a href="./aao.html" style="color:white; margin:0 15px; text-decoration:none;">AAO</a>
-    <a href="./ao.html" style="color:white; margin:0 15px; text-decoration:none;">AO</a>
-    <a href="./sam.html" style="color:white; margin:0 15px; text-decoration:none;">SAM</a>
-    <a href="./nao.html" style="color:white; margin:0 15px; text-decoration:none;">NAO</a>
-    <a href="./npi.html" style="color:white; margin:0 15px; text-decoration:none;">NPI </a>
+  <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
+    <a href="./TPI.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
+    <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
+    <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
+    <a href="./tpi.html" style="color:white; text-decoration:none; padding:0 12px;">TPI</a><span style="color:#95d5b2;">|</span>
+    <a href="./aao.html" style="color:white; text-decoration:none; padding:0 12px;">AAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./ao.html" style="color:white; text-decoration:none; padding:0 12px;">AO</a><span style="color:#95d5b2;">|</span>
+    <a href="./sam.html" style="color:white; text-decoration:none; padding:0 12px;">SAM</a><span style="color:#95d5b2;">|</span>
+    <a href="./nao.html" style="color:white; text-decoration:none; padding:0 12px;">NAO</a><span style="color:#95d5b2;">|</span>
+    <a href="./npi.html" style="color:white; text-decoration:none; padding:0 12px;">NPI</a>
   </div>
 </nav>
+
+<style>
+  .hydra-nav a {
+    transition: text-shadow 0.2s ease, font-weight 0.2s ease;
+  }
+  .hydra-nav a:hover {
+    font-weight: bold;
+    text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
+  }
+
+  /* Footer */
+  .hydra-footer { background:#1b4332; color:#d8f3dc; padding:50px 20px 30px 20px; }
+  .hydra-footer a { color:#95d5b2; }
+  .hydra-footer-inner { max-width:1000px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:30px; }
+  .hydra-footer h4 { color:white; margin:0 0 10px 0; }
+  .hydra-footer p { margin:0 0 8px 0; font-size:0.92em; line-height:1.6; }
+  .hydra-footer-bottom {
+    max-width:1000px; margin:34px auto 0 auto; padding-top:20px;
+    border-top:1px solid rgba(255,255,255,0.15); font-size:0.85em; text-align:center;
+  }
+</style>
+
+<!-- Add spacing so content isn’t hidden under navbar -->
 <div style="height:70px;"></div>
 
 <section style="text-align:center; padding: 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
-  <h1 style="font-size: 3em; margin-bottom: 0.3em;">AMO</h1>
-  <h2 style="font-weight: 400; margin-bottom: 1em;">Atlantic Multidecadal Oscillation</h2>
-  <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto;">
-    Examine long-term Atlantic variability and its connection to droughts, rainfall shifts, and global teleconnections.
+  <h1 style="font-size: 3em; margin-bottom: 0.3em; color: white;">TPI</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em;color: white;">[ADD INDEX NAME]</h2>
+  <p style="font-size: 1.2em; max-width: 700px; margin: 0.1 auto;">
+    Analyze the influence of TPI on global hydroclimate variability.
   </p>
+
+    <!-- Image -->
+  <div style="display:flex; justify-content:center;">
+    <img src="./figures/TPI/TPI_INDEX_TS_LT_ST.png"
+       alt="TPI Index PSD Long-Term"
+       style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Buttons -->
+  <div style="display:flex; justify-content:center; gap:20px; margin-top:20px;">
+    <a href="#TPI-long" style="background:#95d5b2; color:#1b4332; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold;">
+      Long Term [1901–2024]
+    </a>
+    <a href="#TPI-short" style="background:#95d5b2; color:#1b4332; padding:12px 24px; border-radius:8px; text-decoration:none; font-weight:bold;">
+      Short Term [1981–2024]
+    </a>
+  </div>
 </section>
+
+
+<!-- TPI Long Term Section -->
+<section id="TPI-long" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
+  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">TPI Long Term</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1901–2024</h2>
+  <h2 style="margin-bottom: 1em;color: white;">Index Comparison</h2>
+  <img src="./figures/TPI/TPI_INDEX_TS_LT.png"
+       alt="TPI Index PSD Long-Term"
+       style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  <p style="margin-top:10px; font-size:0.95em; color:#444;">
+    TPI Index and PSD (Long-Term)
+  </p>
+
+  <!-- Teleconnections -->
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 1.5em; color: white;">
+    Teleconnection Maps
+  </h1>
+  <h3 style="margin-bottom: 1em; color: white;">
+    Explore TPI impacts on hydroclimate over the century-plus record.
+  </h3>
+
+  <div style="margin-bottom:30px;">
+    <button onclick="showImage('tele-pdsi','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImage('tele-ppt_cru','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="showImage('tele-tmp','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImage('tele-all','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <div id="tele-container" style="max-width:900px; margin:0 auto;">
+    <img id="tele-pdsi" src="./figures/TPI/TPI_SST_PDSI_REG_LT.png" alt="TPI Long Term PDSI Teleconnection" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-ppt_cru"  src="./figures/TPI/TPI_SST_PPT_CRU_REG_LT.png"  alt="TPI Long Term PPT_CRU Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-tmp"  src="./figures/TPI/TPI_SST_TMP_REG_LT.png"  alt="TPI Long Term TMP Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-all"  src="./figures/TPI/TPI_ALL_REG_LT.png" alt="TPI Long Term ALL Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Agreements -->
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 2em; color: white;">
+    Agreement Maps
+  </h1>
+  <h3 style="margin-bottom: 1em; color: white;">
+    Agreement of TPI teleconnections across the century-plus record.
+  </h3>
+
+  <!-- Phase toggle -->
+  <div style="margin-bottom:15px;">
+    <button id="agr-phase-top" onclick="setAgrPhase('top')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
+    <button id="agr-phase-bot" onclick="setAgrPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+  </div>
+
+  <!-- Variable buttons -->
+  <div style="margin-bottom:30px;">
+    <button onclick="setAgrVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
+    <button onclick="setAgrVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="setAgrVar('ppt_cru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="setAgrVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="setAgrVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <div id="agr-container" style="max-width:900px; margin:0 auto;">
+    <img id="agr-top-sst" src="./figures/TPI/TPI_SST_AGR_TOP_LT.png" alt="TPI Long Term SST Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-pdsi" src="./figures/TPI/TPI_PDSI_AGR_TOP_LT.png" alt="TPI Long Term PDSI Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-ppt_cru" src="./figures/TPI/TPI_PPT_CRU_AGR_TOP_LT.png" alt="TPI Long Term PPT_CRU Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-tmp" src="./figures/TPI/TPI_TMP_AGR_TOP_LT.png" alt="TPI Long Term TMP Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-all" src="./figures/TPI/TPI_ALL_AGR_TOP_LT.png" alt="TPI Long Term ALL Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+
+    <img id="agr-bot-sst" src="./figures/TPI/TPI_SST_AGR_BOT_LT.png" alt="TPI Long Term SST Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-pdsi" src="./figures/TPI/TPI_PDSI_AGR_BOT_LT.png" alt="TPI Long Term PDSI Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-ppt_cru" src="./figures/TPI/TPI_PPT_CRU_AGR_BOT_LT.png" alt="TPI Long Term PPT_CRU Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-tmp" src="./figures/TPI/TPI_TMP_AGR_BOT_LT.png" alt="TPI Long Term TMP Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-all" src="./figures/TPI/TPI_ALL_AGR_BOT_LT.png" alt="TPI Long Term ALL Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+</section>
+
+<script>
+function showImage(id, group) {
+  document.querySelectorAll('#' + group + '-container img').forEach(img => img.style.display = 'none');
+  document.getElementById(id).style.display = 'block';
+}
+
+// ── Agreement Maps (LT): phase + variable toggle ────────────────────────────
+const agrState = { phase: 'top', variable: 'pdsi' };
+
+function updateAgrImage() {
+  document.querySelectorAll('#agr-container img').forEach(img => img.style.display = 'none');
+  const el = document.getElementById(`agr-${agrState.phase}-${agrState.variable}`);
+  if (el) el.style.display = 'block';
+}
+
+function setAgrPhase(phase) {
+  agrState.phase = phase;
+  const topBtn = document.getElementById('agr-phase-top');
+  const botBtn = document.getElementById('agr-phase-bot');
+  const activeStyle   = { background: '#95d5b2', color: '#1b4332' };
+  const inactiveStyle = { background: 'transparent', color: '#95d5b2' };
+  Object.assign(topBtn.style, phase === 'top' ? activeStyle : inactiveStyle);
+  Object.assign(botBtn.style, phase === 'bot' ? activeStyle : inactiveStyle);
+  updateAgrImage();
+}
+
+function setAgrVar(v) {
+  agrState.variable = v;
+  updateAgrImage();
+}
+
+// Defaults
+showImage('tele-pdsi', 'tele');
+updateAgrImage();
+</script>
+
+<!-- TPI Short Term Section -->
+<section id="TPI-short" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
+  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">TPI Short Term</h1>
+  <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1981–2024</h2>
+
+  <h2 style="margin-bottom: 1em;color: white;">Index & Power Spectrum</h2>
+  <img src="./figures/TPI/TPI_INDEX_TS_ST.png"
+       alt="TPI Index PSD Short-Term"
+       style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  <p style="margin-top:10px; font-size:0.95em; color:#444;">
+    TPI Index and PSD (Short-Term)
+  </p>
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em;color: white;">
+  Regression Analysis
+  </h1>
+  <h3 style="margin-bottom: 1em;color: white;">
+  Explore TPI impacts on hydroclimate over the recent record.
+  </h3>
+
+  <!-- Toggle Buttons -->
+  <div style="margin-bottom:30px;">
+    <button onclick="showImageST('pdsiST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImageST('pptST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="showImageST('tmpST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImageST('allST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <!-- Image Containers -->
+  <div id="image-container-ST" style="max-width:900px; margin:0 auto;">
+    <img id="pdsiST" src="./Figures/TPI/TPI_ST_REG_PDSI.png" alt="TPI Short Term PDSI" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptST"  src="./Figures/TPI/TPI_ST_REG_PPT.png"  alt="TPI Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tmpST"  src="./Figures/TPI/TPI_ST_REG_TMP.png"  alt="TPI Short Term TMP"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="allST"  src="./Figures/TPI/TPI_ST_REG_COMBO.png" alt="TPI Short Term ALL"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+
+  <!-- Agreements -->
+  <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 2em; color: white;">
+    Agreement Maps
+  </h1>
+  <h3 style="margin-bottom: 1em; color: white;">
+    Agreement of TPI teleconnections over the recent record.
+  </h3>
+
+  <!-- Phase toggle -->
+  <div style="margin-bottom:15px;">
+    <button id="agrst-phase-top" onclick="setAgrstPhase('top')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
+    <button id="agrst-phase-bot" onclick="setAgrstPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+  </div>
+
+  <!-- Variable buttons -->
+  <div style="margin-bottom:30px;">
+    <button onclick="setAgrstVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
+    <button onclick="setAgrstVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="setAgrstVar('sm')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
+    <button onclick="setAgrstVar('pptgpcp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
+    <button onclick="setAgrstVar('pptcru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="setAgrstVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="setAgrstVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+  </div>
+
+  <div id="agrst-container" style="max-width:900px; margin:0 auto;">
+    <img id="agrst-top-sst"     src="./Figures/TPI/TPI_SST_AGR_TOP_ST.png"       alt="TPI Short Term SST Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pdsi"    src="./Figures/TPI/TPI_PDSI_AGR_TOP_ST.png"      alt="TPI Short Term PDSI Agreement (Top 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-sm"      src="./Figures/TPI/TPI_SM_AGR_TOP_ST.png"        alt="TPI Short Term SM Agreement (Top 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pptgpcp" src="./Figures/TPI/TPI_PPT_GPCP_AGR_TOP_ST.png"  alt="TPI Short Term PPT_GPCP Agreement (Top 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pptcru"  src="./Figures/TPI/TPI_PPT_CRU_AGR_TOP_ST.png"   alt="TPI Short Term PPT_CRU Agreement (Top 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-tmp"     src="./Figures/TPI/TPI_TMP_AGR_TOP_ST.png"       alt="TPI Short Term TMP Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-all"     src="./Figures/TPI/TPI_ALL_AGR_TOP_ST.png"       alt="TPI Short Term ALL Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+
+    <img id="agrst-bot-sst"     src="./Figures/TPI/TPI_SST_AGR_BOT_ST.png"       alt="TPI Short Term SST Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pdsi"    src="./Figures/TPI/TPI_PDSI_AGR_BOT_ST.png"      alt="TPI Short Term PDSI Agreement (Bottom 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-sm"      src="./Figures/TPI/TPI_SM_AGR_BOT_ST.png"        alt="TPI Short Term SM Agreement (Bottom 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pptgpcp" src="./Figures/TPI/TPI_PPT_GPCP_AGR_BOT_ST.png"  alt="TPI Short Term PPT_GPCP Agreement (Bottom 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pptcru"  src="./Figures/TPI/TPI_PPT_CRU_AGR_BOT_ST.png"   alt="TPI Short Term PPT_CRU Agreement (Bottom 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-tmp"     src="./Figures/TPI/TPI_TMP_AGR_BOT_ST.png"       alt="TPI Short Term TMP Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-all"     src="./Figures/TPI/TPI_ALL_AGR_BOT_ST.png"       alt="TPI Short Term ALL Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+  </div>
+</section>
+
+<!-- Script to handle toggle -->
+<script>
+function showImageST(id) {
+  // Hide all ST images
+  document.querySelectorAll('#image-container-ST img').forEach(img => img.style.display = 'none');
+  // Show selected ST image
+  document.getElementById(id).style.display = 'block';
+}
+
+// ── Agreement Maps (ST): phase + variable toggle ────────────────────────────
+const agrstState = { phase: 'top', variable: 'pdsi' };
+
+function updateAgrstImage() {
+  document.querySelectorAll('#agrst-container img').forEach(img => img.style.display = 'none');
+  const el = document.getElementById(`agrst-${agrstState.phase}-${agrstState.variable}`);
+  if (el) el.style.display = 'block';
+}
+
+function setAgrstPhase(phase) {
+  agrstState.phase = phase;
+  const topBtn = document.getElementById('agrst-phase-top');
+  const botBtn = document.getElementById('agrst-phase-bot');
+  const activeStyle   = { background: '#95d5b2', color: '#1b4332' };
+  const inactiveStyle = { background: 'transparent', color: '#95d5b2' };
+  Object.assign(topBtn.style, phase === 'top' ? activeStyle : inactiveStyle);
+  Object.assign(botBtn.style, phase === 'bot' ? activeStyle : inactiveStyle);
+  updateAgrstImage();
+}
+
+function setAgrstVar(v) {
+  agrstState.variable = v;
+  updateAgrstImage();
+}
+
+// Show PDSI by default
+showImageST('pdsiST');
+updateAgrstImage();
+</script>
+
+<!-- Footer -->
+<footer class="hydra-footer">
+  <div class="hydra-footer-inner">
+    <div>
+      <h4>Explore</h4>
+      <p><a href="./about.html">About</a> · <a href="./methods.html">Methods</a></p>
+      <p><a href="./usage.html">Usage Examples</a> · <a href="./contact.html">Contact</a></p>
+    </div>
+    <div>
+      <h4>Citation</h4>
+      <p style="font-style:italic;">Samara, A., et al. In Prep. The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes.</p>
+    </div>
+    <div>
+      <h4>Funding</h4>
+      <p>Supported by the National Science Foundation under Grants AGS-2127684 and AGS-2101214.</p>
+    </div>
+  </div>
+  <div class="hydra-footer-bottom">
+    <p style="margin:0;">Contributions welcome — submit a pull request or open an issue. Questions: <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a></p>
+  </div>
+</footer>
