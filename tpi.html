@@ -210,18 +210,22 @@ updateAgrImage();
 
   <!-- Toggle Buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImageST('pdsiST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="showImageST('pptST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="showImageST('tmpST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="showImageST('allST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button onclick="showImageST('pdsiST')"    style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImageST('smST')"      style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
+    <button onclick="showImageST('pptgpcpST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
+    <button onclick="showImageST('pptcruST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="showImageST('tmpST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImageST('allST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
   </div>
 
   <!-- Image Containers -->
   <div id="image-container-ST" style="max-width:900px; margin:0 auto;">
-    <img id="pdsiST" src="./Figures/TPI/TPI_ST_REG_PDSI.png" alt="TPI Short Term PDSI" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="pptST"  src="./Figures/TPI/TPI_ST_REG_PPT.png"  alt="TPI Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tmpST"  src="./Figures/TPI/TPI_ST_REG_TMP.png"  alt="TPI Short Term TMP"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="allST"  src="./Figures/TPI/TPI_ST_REG_COMBO.png" alt="TPI Short Term ALL"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pdsiST"    src="./Figures/TPI/TPI_SST_PDSI_REG_ST.png"     alt="TPI Short Term PDSI"     style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="smST"      src="./Figures/TPI/TPI_SST_SM_REG_ST.png"       alt="TPI Short Term SM"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptgpcpST" src="./Figures/TPI/TPI_SST_PPT_GPCP_REG_ST.png" alt="TPI Short Term PPT_GPCP" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptcruST"  src="./Figures/TPI/TPI_SST_PPT_CRU_REG_ST.png"  alt="TPI Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tmpST"     src="./Figures/TPI/TPI_SST_TMP_REG_ST.png"      alt="TPI Short Term TMP"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="allST"     src="./Figures/TPI/TPI_ALL_REG_ST.png"          alt="TPI Short Term ALL"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 
   <!-- Agreements -->
