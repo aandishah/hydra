@@ -120,11 +120,6 @@ title: Methods | HYDRA
     are produced with a consistent processing pipeline across all indices, enabling direct comparison of teleconnection
     patterns across datasets, spatial resolutions, and time periods.
   </p>
-  <p>
-    HYDRA is intended as a working resource rather than an additional set of stationary datasets. Reproducible code is
-    provided that can be applied to any gridded hydroclimate product and any user-defined analysis period and baseline,
-    supporting future assessments and updates as new datasets become available.
-  </p>
 
   <figure class="hydra-figure">
     <img src="./figures/Flowchart_figures.png" alt="Flowchart of HYDRA data processing steps">
@@ -156,7 +151,7 @@ title: Methods | HYDRA
         <td>Atmospheric circulation indices (IT, ST)</td>
       </tr>
       <tr>
-        <td>Precipitation, temperature, PDSI</td>
+        <td>Precipitation (over land), temperature, PDSI</td>
         <td>CRU TS v4.09 (Harris et al., 2020; van der Schrier et al., 2011, 2013)</td>
         <td>1901–2024</td>
         <td>Hydroclimate fields (LT, IT, ST)</td>
@@ -169,7 +164,7 @@ title: Methods | HYDRA
       </tr>
       <tr>
         <td>Precipitation (land &amp; ocean)</td>
-        <td>GPCP v2.3 (Adler et al., 2018)</td>
+        <td>GPCP v2.3 (Adler et al., 2003)</td>
         <td>1979–present</td>
         <td>Hydroclimate fields (ST)</td>
       </tr>
@@ -188,7 +183,7 @@ title: Methods | HYDRA
 
   <table class="hydra-table">
     <thead>
-      <tr><th>Index family</th><th>Indices</th><th>Source field</th><th>Analysis periods</th></tr>
+      <tr><th>Index-type</th><th>Indices</th><th>Source field</th><th>Analysis periods</th></tr>
     </thead>
     <tbody>
       <tr>
