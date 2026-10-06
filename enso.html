@@ -50,6 +50,22 @@ title: ENSO
     max-width:1000px; margin:34px auto 0 auto; padding-top:20px;
     border-top:1px solid rgba(255,255,255,0.15); font-size:0.85em; text-align:center;
   }
+  /* Variable buttons: color-coded per variable (Ocean & Sky palette) */
+  .hydra-var { margin:5px; padding:12px 24px; border:2px solid transparent; border-radius:8px; font-weight:bold; cursor:pointer; transition:transform 0.12s ease, box-shadow 0.12s ease; }
+  .hydra-var:hover { transform:translateY(-1px); }
+  .hydra-var.on { color:#fff !important; box-shadow:0 0 0 2px #fff, 0 3px 10px rgba(0,0,0,0.3); }
+  .hydra-var[data-var="SST"] { background:#a8dadc; color:#1d3557; }
+  .hydra-var[data-var="SST"].on { background:#1d3557; }
+  .hydra-var[data-var="PDSI"] { background:#e8d3a6; color:#4d3b1f; }
+  .hydra-var[data-var="PDSI"].on { background:#4d3b1f; }
+  .hydra-var[data-var="SM"] { background:#f0c2b8; color:#5a2a27; }
+  .hydra-var[data-var="SM"].on { background:#5a2a27; }
+  .hydra-var[data-var="PPT"] { background:#99d6ea; color:#123c69; }
+  .hydra-var[data-var="PPT"].on { background:#123c69; }
+  .hydra-var[data-var="TMP"] { background:#f3b0aa; color:#8b1a1a; }
+  .hydra-var[data-var="TMP"].on { background:#8b1a1a; }
+  .hydra-var[data-var="ALL"] { background:#9fd8cb; color:#0b3d3a; }
+  .hydra-var[data-var="ALL"].on { background:#0b3d3a; }
 </style>
 
 <!-- Add spacing so content isn’t hidden under navbar -->
@@ -80,6 +96,20 @@ title: ENSO
   </div>
 </section>
 
+<!-- At a glance -->
+<div class="hydra-glance">
+  <h3>ENSO at a glance</h3>
+  <span class="hydra-glance-type">Ocean-based index</span>
+  <dl>
+    <dt>Full name</dt><dd>El Niño–Southern Oscillation</dd>
+    <dt>Definition</dt><dd>Area-averaged SST anomalies over the Niño 3.4 region (5°N–5°S, 170°–120°W).</dd>
+    <dt>Data source</dt><dd>HadISST 1.1 sea surface temperature</dd>
+    <dt>Analysis periods</dt><dd>Long term 1901–2024 · Short term 1981–2024</dd>
+    <dt>Key reference</dt><dd>Trenberth et al. (1997)</dd>
+  </dl>
+</div>
+
+
 
 <!-- ENSO Long Term Section -->
 <section id="ENSO-long" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
@@ -88,7 +118,7 @@ title: ENSO
   <img src="./Figures/ENSO/ENSO_INDEX_TS_LT.png"
        alt="ENSO Index PSD Long-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-  <p style="margin-top:10px; font-size:0.95em; color:#444;">
+  <p style="margin-top:10px; font-size:0.95em; color:#d8f3dc;">
     ENSO Index
   </p>
 
@@ -101,10 +131,10 @@ title: ENSO
   </h3>
 
   <div style="margin-bottom:30px;">
-    <button onclick="showImage('tele-pdsi','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="showImage('tele-ppt_cru','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="showImage('tele-tmp','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="showImage('tele-all','tele')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button class="hydra-var on" data-var="PDSI" onclick="showImage('tele-pdsi','tele')">PDSI</button>
+    <button class="hydra-var" data-var="PPT" onclick="showImage('tele-ppt_cru','tele')">PPT_CRU</button>
+    <button class="hydra-var" data-var="TMP" onclick="showImage('tele-tmp','tele')">TMP</button>
+    <button class="hydra-var" data-var="ALL" onclick="showImage('tele-all','tele')">ALL</button>
   </div>
 
   <div id="tele-container" style="max-width:900px; margin:0 auto;">
@@ -113,6 +143,7 @@ title: ENSO
     <img id="tele-tmp"  src="./Figures/ENSO/ENSO_SST_TMP_REG_LT.png"  alt="ENSO Long Term TMP Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
     <img id="tele-all"  src="./Figures/ENSO/ENSO_ALL_REG_LT.png" alt="ENSO Long Term ALL Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
+  <p class="hydra-caption" data-for="tele" data-index="ENSO" data-period="LT"></p>
 
   <!-- Agreements -->
   <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 2em; color: white;">
@@ -130,11 +161,11 @@ title: ENSO
 
   <!-- Variable buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="setAgrVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
-    <button onclick="setAgrVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="setAgrVar('ppt_cru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="setAgrVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="setAgrVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button class="hydra-var" data-var="SST" onclick="setAgrVar('sst')">SST</button>
+    <button class="hydra-var on" data-var="PDSI" onclick="setAgrVar('pdsi')">PDSI</button>
+    <button class="hydra-var" data-var="PPT" onclick="setAgrVar('ppt_cru')">PPT_CRU</button>
+    <button class="hydra-var" data-var="TMP" onclick="setAgrVar('tmp')">TMP</button>
+    <button class="hydra-var" data-var="ALL" onclick="setAgrVar('all')">ALL</button>
   </div>
 
   <div id="agr-container" style="max-width:900px; margin:0 auto;">
@@ -150,6 +181,7 @@ title: ENSO
     <img id="agr-bot-tmp" src="./Figures/ENSO/ENSO_TMP_AGR_BOT_LT.png" alt="ENSO Long Term TMP Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
     <img id="agr-bot-all" src="./Figures/ENSO/ENSO_ALL_AGR_BOT_LT.png" alt="ENSO Long Term ALL Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
+  <p class="hydra-caption" data-for="agr" data-index="ENSO" data-period="LT"></p>
 </section>
 
 <script>
@@ -195,7 +227,7 @@ updateAgrImage();
   <img src="./Figures/ENSO/ENSO_INDEX_TS_ST.png"
        alt="ENSO Index PSD Short-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-  <p style="margin-top:10px; font-size:0.95em; color:#444;">
+  <p style="margin-top:10px; font-size:0.95em; color:#d8f3dc;">
     ENSO Index and PSD (Short-Term)
   </p>
   <h1 style="font-size: 2.5em; margin-bottom: 0.1em;color: white;">
@@ -207,12 +239,12 @@ updateAgrImage();
 
   <!-- Toggle Buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImageST('pdsiST')"    style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="showImageST('smST')"      style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
-    <button onclick="showImageST('pptgpcpST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
-    <button onclick="showImageST('pptcruST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="showImageST('tmpST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="showImageST('allST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button class="hydra-var on" data-var="PDSI" onclick="showImageST('pdsiST')">PDSI</button>
+    <button class="hydra-var" data-var="SM" onclick="showImageST('smST')">SM</button>
+    <button class="hydra-var" data-var="PPT" onclick="showImageST('pptgpcpST')">PPT_GPCP</button>
+    <button class="hydra-var" data-var="PPT" onclick="showImageST('pptcruST')">PPT_CRU</button>
+    <button class="hydra-var" data-var="TMP" onclick="showImageST('tmpST')">TMP</button>
+    <button class="hydra-var" data-var="ALL" onclick="showImageST('allST')">ALL</button>
   </div>
 
   <!-- Image Containers -->
@@ -224,6 +256,7 @@ updateAgrImage();
     <img id="tmpST"     src="./Figures/ENSO/ENSO_SST_TMP_REG_ST.png"      alt="ENSO Short Term TMP"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
     <img id="allST"     src="./Figures/ENSO/ENSO_ALL_REG_ST.png"          alt="ENSO Short Term ALL"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
+  <p class="hydra-caption" data-for="st" data-index="ENSO" data-period="ST"></p>
 
   <!-- Agreements -->
   <h1 style="font-size: 2.5em; margin-bottom: 0.1em; margin-top: 2em; color: white;">
@@ -241,13 +274,13 @@ updateAgrImage();
 
   <!-- Variable buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="setAgrstVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
-    <button onclick="setAgrstVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="setAgrstVar('sm')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
-    <button onclick="setAgrstVar('pptgpcp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
-    <button onclick="setAgrstVar('pptcru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="setAgrstVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="setAgrstVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button class="hydra-var" data-var="SST" onclick="setAgrstVar('sst')">SST</button>
+    <button class="hydra-var on" data-var="PDSI" onclick="setAgrstVar('pdsi')">PDSI</button>
+    <button class="hydra-var" data-var="SM" onclick="setAgrstVar('sm')">SM</button>
+    <button class="hydra-var" data-var="PPT" onclick="setAgrstVar('pptgpcp')">PPT_GPCP</button>
+    <button class="hydra-var" data-var="PPT" onclick="setAgrstVar('pptcru')">PPT_CRU</button>
+    <button class="hydra-var" data-var="TMP" onclick="setAgrstVar('tmp')">TMP</button>
+    <button class="hydra-var" data-var="ALL" onclick="setAgrstVar('all')">ALL</button>
   </div>
 
   <div id="agrst-container" style="max-width:900px; margin:0 auto;">
@@ -267,6 +300,7 @@ updateAgrImage();
     <img id="agrst-bot-tmp"     src="./Figures/ENSO/ENSO_TMP_AGR_BOT_ST.png"       alt="ENSO Short Term TMP Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
     <img id="agrst-bot-all"     src="./Figures/ENSO/ENSO_ALL_AGR_BOT_ST.png"       alt="ENSO Short Term ALL Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
+  <p class="hydra-caption" data-for="agrst" data-index="ENSO" data-period="ST"></p>
 </section>
 
 <!-- Script to handle toggle -->
@@ -329,3 +363,13 @@ updateAgrstImage();
     <p style="margin:0;">Contributions welcome — submit a pull request or open an issue. Questions: <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a></p>
   </div>
 </footer>
+
+<script>
+// Highlight the selected variable button within each button row
+document.querySelectorAll('.hydra-var').forEach(function(btn) {
+  btn.addEventListener('click', function() {
+    btn.parentElement.querySelectorAll('.hydra-var').forEach(function(b) { b.classList.remove('on'); });
+    btn.classList.add('on');
+  });
+});
+</script>

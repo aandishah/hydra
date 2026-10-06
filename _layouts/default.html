@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&family=Source+Sans+3:ital,wght@0,300;0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
   <style>
-    /* Font pairing: Montserrat for headings, Source Sans for body text */
+    /* ── Font pairing: Montserrat for headings, Source Sans for body text ── */
     body {
       font-family: "Source Sans 3", "Source Sans Pro", -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
     }
@@ -20,9 +20,177 @@
     button, input, select, textarea, table {
       font-family: inherit;
     }
+
+    /* ── Navbar: underline the page you're on ── */
+    .hydra-nav a.hydra-current {
+      text-decoration: underline !important;
+      text-decoration-thickness: 2px !important;
+      text-underline-offset: 6px;
+    }
+    .hydra-menu-btn { display: none; }
+
+    /* ── "At a glance" card on index pages ── */
+    .hydra-glance {
+      max-width: 1000px; margin: 40px auto 0 auto; padding: 24px 28px;
+      background: #fff; border-radius: 12px; box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+      border-top: 5px solid #1b4332; color: #212529;
+    }
+    .hydra-glance h3 { margin: 0 0 4px 0; color: #1b4332; font-size: 1.15em; letter-spacing: 0.3px; }
+    .hydra-glance .hydra-glance-type { display: inline-block; font-size: 0.8em; font-weight: 600; color: #2d6a4f; background: #e9f5ec; padding: 2px 10px; border-radius: 999px; margin-bottom: 14px; }
+    .hydra-glance dl { display: grid; grid-template-columns: 170px 1fr; gap: 10px 20px; margin: 0; line-height: 1.5; }
+    .hydra-glance dt { font-weight: 700; color: #1b4332; }
+    .hydra-glance dd { margin: 0; color: #343a40; }
+
+    /* ── Captions under maps ── */
+    .hydra-caption {
+      max-width: 900px; margin: 14px auto 0 auto; text-align: left;
+      font-size: 0.95em; line-height: 1.55; color: #d8f3dc;
+    }
+    .hydra-caption strong { color: #fff; }
+
+    /* ── Click to enlarge ── */
+    section img, .hydra-figure img, .hydra-body img { cursor: zoom-in; }
+    .hydra-lightbox {
+      position: fixed; inset: 0; z-index: 10000; background: rgba(0,0,0,0.92);
+      display: none; flex-direction: column; align-items: center; justify-content: center; padding: 20px;
+    }
+    .hydra-lightbox.open { display: flex; }
+    .hydra-lightbox img { max-width: 96vw; max-height: 84vh; object-fit: contain; background: #fff; border-radius: 6px; cursor: zoom-out; }
+    .hydra-lightbox p { color: #e9ecef; margin: 12px 0 0 0; font-size: 0.95em; text-align: center; max-width: 900px; }
+    .hydra-lightbox a { color: #95d5b2; }
+    .hydra-lightbox-close {
+      position: absolute; top: 14px; right: 18px; background: transparent; border: none;
+      color: #fff; font-size: 34px; line-height: 1; cursor: pointer;
+    }
+
+    /* ── Small screens ── */
+    @media (max-width: 760px) {
+      .hydra-nav > div:first-child { padding: 10px 16px !important; flex-wrap: wrap; }
+      .hydra-nav > div:first-child > div:first-child { font-size: 1em !important; max-width: calc(100% - 56px); }
+      .hydra-nav > div:first-child > div:nth-child(2),
+      .hydra-nav > div:nth-child(2) { display: none !important; }
+      .hydra-nav.open > div:first-child > div:nth-child(2) {
+        display: flex !important; flex-direction: column; width: 100%; padding-top: 8px;
+      }
+      .hydra-nav.open > div:first-child > div:nth-child(2) a { margin: 0 !important; padding: 10px 0; border-top: 1px solid rgba(255,255,255,0.12); }
+      .hydra-nav.open > div:nth-child(2) { display: flex !important; padding: 10px 12px !important; row-gap: 8px; }
+      .hydra-nav > div:first-child > div:first-child { order: 1; }
+      .hydra-nav > div:first-child > div:nth-child(2) { order: 3; }
+      .hydra-menu-btn {
+        order: 2; margin-left: auto;
+        display: block; background: transparent; border: 1px solid rgba(255,255,255,0.5); color: #fff;
+        font-size: 20px; line-height: 1; padding: 6px 10px; border-radius: 6px; cursor: pointer;
+      }
+      section { padding-left: 14px !important; padding-right: 14px !important; padding-top: 48px !important; padding-bottom: 48px !important; }
+      section[id] { margin: 20px 8px !important; border-radius: 10px !important; }
+      section h1 { font-size: 2em !important; }
+      section div[style*="display:flex"] { flex-wrap: wrap; }
+      .hydra-var { padding: 8px 14px !important; margin: 4px !important; }
+      .hydra-glance { margin: 24px 10px 0 10px; padding: 18px 16px; }
+      .hydra-glance dl { grid-template-columns: 1fr; gap: 2px; }
+      .hydra-glance dd { margin-bottom: 10px; }
+      .hydra-body { padding: 0 14px !important; }
+    }
   </style>
 </head>
 <body>
 {{ content }}
+
+<div class="hydra-lightbox" id="hydra-lightbox" role="dialog" aria-modal="true" aria-label="Enlarged figure">
+  <button class="hydra-lightbox-close" aria-label="Close">&times;</button>
+  <img alt="">
+  <p></p>
+</div>
+
+<script>
+(function () {
+  /* ── Navbar: underline the current page, add mobile menu button ── */
+  var here = location.pathname.split('/').pop() || 'index.html';
+  document.querySelectorAll('.hydra-nav a').forEach(function (a) {
+    var target = (a.getAttribute('href') || '').replace('./', '') || 'index.html';
+    if (target === here && a.getAttribute('href') !== './') a.classList.add('hydra-current');
+  });
+  var nav = document.querySelector('.hydra-nav');
+  if (nav && nav.firstElementChild) {
+    var btn = document.createElement('button');
+    btn.className = 'hydra-menu-btn';
+    btn.setAttribute('aria-label', 'Menu');
+    btn.innerHTML = '&#9776;';
+    btn.addEventListener('click', function () { nav.classList.toggle('open'); });
+    nav.firstElementChild.appendChild(btn);
+    nav.querySelectorAll('a').forEach(function (a) {
+      a.addEventListener('click', function () { nav.classList.remove('open'); });
+    });
+  }
+
+  /* ── Click to enlarge ── */
+  var box = document.getElementById('hydra-lightbox');
+  var boxImg = box.querySelector('img');
+  var boxText = box.querySelector('p');
+  function closeBox() { box.classList.remove('open'); boxImg.src = ''; }
+  document.querySelectorAll('section img, .hydra-figure img, .hydra-body img').forEach(function (img) {
+    img.addEventListener('click', function () {
+      boxImg.src = img.src;
+      boxImg.alt = img.alt;
+      boxText.innerHTML = (img.alt ? img.alt + ' · ' : '') + '<a href="' + img.src + '" target="_blank" rel="noopener">Open full size</a>';
+      box.classList.add('open');
+    });
+  });
+  box.addEventListener('click', function (e) { if (e.target.tagName !== 'A') closeBox(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeBox(); });
+
+  /* ── Captions under the maps (index pages) ── */
+  var CONTAINERS = { tele: 'tele-container', agr: 'agr-container', st: 'image-container-ST', agrst: 'agrst-container' };
+  var PERIODS = { LT: 'Long-term', IT: 'Intermediate-term', ST: 'Short-term' };
+  var YEARS = { LT: '1901–2024', IT: '1941–2024', ST: '1981–2024' };
+  var TELE = {
+    pdsi: 'PDSI over land and SST over the oceans',
+    ppt_cru: 'CRU precipitation (% change) over land and SST over the oceans',
+    tmp: 'CRU near-surface temperature over land and SST over the oceans',
+    sm: 'GLEAM soil moisture over land and SST over the oceans',
+    ppt_gpcp: 'GPCP precipitation (% change) over land and ocean',
+    all: 'every hydroclimate variable for this period (one row per variable), with SST over the oceans'
+  };
+  var AGR = {
+    sst: ['SST', 'red shades show agreement with warm extremes, blue with cold extremes'],
+    pdsi: ['PDSI', 'green shades show agreement with wet extremes, brown with dry extremes'],
+    sm: ['soil moisture', 'green shades show agreement with wet extremes, brown with dry extremes'],
+    ppt_cru: ['CRU precipitation', 'green shades show agreement with wet extremes, brown with dry extremes'],
+    ppt_gpcp: ['GPCP precipitation', 'green shades show agreement with wet extremes, brown with dry extremes'],
+    tmp: ['temperature', 'red shades show agreement with warm extremes, blue with cold extremes'],
+    all: ['all variables', 'each row shows one variable, colored as on its own map']
+  };
+  function variableOf(id) {
+    var v = id.replace(/^(tele|agrst|agr)-(top-|bot-)?/, '').replace(/ST$/, '');
+    return { pptcru: 'ppt_cru', pptgpcp: 'ppt_gpcp' }[v] || v;
+  }
+  function updateCaptions() {
+    document.querySelectorAll('.hydra-caption[data-for]').forEach(function (cap) {
+      var cont = document.getElementById(CONTAINERS[cap.dataset.for]);
+      if (!cont) return;
+      var shown = Array.prototype.find.call(cont.querySelectorAll('img'), function (i) { return i.style.display === 'block'; });
+      if (!shown) { cap.textContent = ''; return; }
+      var idx = cap.dataset.index, p = cap.dataset.period, v = variableOf(shown.id);
+      var head = '<strong>' + idx + ' · ' + PERIODS[p] + ' (' + YEARS[p] + ').</strong> ';
+      if (cap.dataset.for === 'tele' || cap.dataset.for === 'st') {
+        cap.innerHTML = head + 'Seasonal (DJF, MAM, JJA, SON) regression of ' + (TELE[v] || v) +
+          ' onto the standardized ' + idx + ' index, in units of anomaly per one standard deviation of the index. ' +
+          'Stippling marks areas where the regression is not statistically significant (two-tailed t-test, 95% level).';
+      } else {
+        var phase = /-bot-/.test(shown.id) ? 'Bottom 15%' : 'Top 15%';
+        var a = AGR[v] || [v, ''];
+        cap.innerHTML = head + 'Agreement composite for the ' + phase + ' of ' + idx + ' years, by season. ' +
+          'Colors show how often extreme ' + a[0] + ' years coincide with these index years: ' + a[1] +
+          '; darker shades mean high agreement, lighter shades low agreement. ' +
+          'White areas show agreement no greater than chance; grey areas are masked because the same index years include both high and low extremes (conflicting signals).';
+      }
+    });
+  }
+  if (document.querySelector('.hydra-caption[data-for]')) {
+    document.addEventListener('click', function () { setTimeout(updateCaptions, 0); });
+    updateCaptions();
+  }
+})();
+</script>
 </body>
 </html>
