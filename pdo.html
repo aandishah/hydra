@@ -18,7 +18,7 @@ title: PDO
     </div>
   </div>
   <div style="background:#2d6a4f; padding:10px 40px; display:flex; justify-content:center; align-items:center; flex-wrap:wrap;">
-    <a href="./PDO.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
+    <a href="./enso.html" style="color:white; text-decoration:none; padding:0 12px;">ENSO</a><span style="color:#95d5b2;">|</span>
     <a href="./pdo.html" style="color:white; text-decoration:none; padding:0 12px;">PDO</a><span style="color:#95d5b2;">|</span>
     <a href="./iod.html" style="color:white; text-decoration:none; padding:0 12px;">IOD</a><span style="color:#95d5b2;">|</span>
     <a href="./amo.html" style="color:white; text-decoration:none; padding:0 12px;">AMO</a><span style="color:#95d5b2;">|</span>
@@ -39,6 +39,8 @@ title: PDO
     font-weight: bold;
     text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
   }
+
+  /* Footer */
   .hydra-footer { background:#1b4332; color:#d8f3dc; padding:50px 20px 30px 20px; }
   .hydra-footer a { color:#95d5b2; }
   .hydra-footer-inner { max-width:1000px; margin:auto; display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:30px; }
@@ -56,7 +58,7 @@ title: PDO
 <section style="text-align:center; padding: 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
   <h1 style="font-size: 3em; margin-bottom: 0.3em; color: white;">PDO</h1>
   <h2 style="font-weight: 400; margin-bottom: 1em;color: white;">Pacific Decadal Oscillation</h2>
-  <p style="font-size: 1.2em; max-width: 700px; margin: 0.2 auto;">
+  <p style="font-size: 1.2em; max-width: 700px; margin: 0.1 auto;">
     Analyze the influence of PDO on global hydroclimate variability.
   </p>
 
@@ -81,14 +83,13 @@ title: PDO
 
 <!-- PDO Long Term Section -->
 <section id="PDO-long" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
-  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">PDO Long Term</h1>
-  <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1901–2024</h2>
-  <h2 style="margin-bottom: 1em;color: white;">Index Comparison</h2>
-  <img src="./Figures/PDO/PDO_INDEX_TS_LT_ST.png"
+  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">PDO [LT] </h1>
+  <h2 style="margin-bottom: 1em;color: white;">Index 1901–2024 </h2>
+  <img src="./Figures/PDO/PDO_INDEX_TS_LT.png"
        alt="PDO Index PSD Long-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   <p style="margin-top:10px; font-size:0.95em; color:#444;">
-    PDO Index and PSD (Long-Term)
+    PDO Index
   </p>
 
   <!-- Teleconnections -->
@@ -121,14 +122,33 @@ title: PDO
     Agreement of PDO teleconnections across the century-plus record.
   </h3>
 
+  <!-- Phase toggle -->
+  <div style="margin-bottom:15px;">
+    <button id="agr-phase-top" onclick="setAgrPhase('top')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
+    <button id="agr-phase-bot" onclick="setAgrPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+  </div>
+
+  <!-- Variable buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImage('agr-top','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
-    <button onclick="showImage('agr-bot','agr')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+    <button onclick="setAgrVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
+    <button onclick="setAgrVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="setAgrVar('ppt_cru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="setAgrVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="setAgrVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
   </div>
 
   <div id="agr-container" style="max-width:900px; margin:0 auto;">
-    <img id="agr-top" src="./Figures/PDO/PDO_TOP15_AGREEMENT_LT.png" alt="PDO Long Term Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-bot" src="./Figures/PDO/PDO_BOT15_AGREEMENT_LT.png" alt="PDO Long Term Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-sst" src="./Figures/PDO/PDO_SST_AGR_TOP_LT.png" alt="PDO Long Term SST Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-pdsi" src="./Figures/PDO/PDO_PDSI_AGR_TOP_LT.png" alt="PDO Long Term PDSI Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-ppt_cru" src="./Figures/PDO/PDO_PPT_CRU_AGR_TOP_LT.png" alt="PDO Long Term PPT_CRU Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-tmp" src="./Figures/PDO/PDO_TMP_AGR_TOP_LT.png" alt="PDO Long Term TMP Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-all" src="./Figures/PDO/PDO_ALL_AGR_TOP_LT.png" alt="PDO Long Term ALL Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+
+    <img id="agr-bot-sst" src="./Figures/PDO/PDO_SST_AGR_BOT_LT.png" alt="PDO Long Term SST Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-pdsi" src="./Figures/PDO/PDO_PDSI_AGR_BOT_LT.png" alt="PDO Long Term PDSI Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-ppt_cru" src="./Figures/PDO/PDO_PPT_CRU_AGR_BOT_LT.png" alt="PDO Long Term PPT_CRU Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-tmp" src="./Figures/PDO/PDO_TMP_AGR_BOT_LT.png" alt="PDO Long Term TMP Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-all" src="./Figures/PDO/PDO_ALL_AGR_BOT_LT.png" alt="PDO Long Term ALL Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 </section>
 
@@ -138,22 +158,45 @@ function showImage(id, group) {
   document.getElementById(id).style.display = 'block';
 }
 
+// ── Agreement Maps (LT): phase + variable toggle ────────────────────────────
+const agrState = { phase: 'top', variable: 'pdsi' };
+
+function updateAgrImage() {
+  document.querySelectorAll('#agr-container img').forEach(img => img.style.display = 'none');
+  const el = document.getElementById(`agr-${agrState.phase}-${agrState.variable}`);
+  if (el) el.style.display = 'block';
+}
+
+function setAgrPhase(phase) {
+  agrState.phase = phase;
+  const topBtn = document.getElementById('agr-phase-top');
+  const botBtn = document.getElementById('agr-phase-bot');
+  const activeStyle   = { background: '#95d5b2', color: '#1b4332' };
+  const inactiveStyle = { background: 'transparent', color: '#95d5b2' };
+  Object.assign(topBtn.style, phase === 'top' ? activeStyle : inactiveStyle);
+  Object.assign(botBtn.style, phase === 'bot' ? activeStyle : inactiveStyle);
+  updateAgrImage();
+}
+
+function setAgrVar(v) {
+  agrState.variable = v;
+  updateAgrImage();
+}
+
 // Defaults
 showImage('tele-pdsi', 'tele');
-showImage('agr-top', 'agr');
+updateAgrImage();
 </script>
 
 <!-- PDO Short Term Section -->
 <section id="PDO-short" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
-  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">PDO Short Term</h1>
-  <h2 style="font-weight: 400; margin-bottom: 1em; color: white;">1981–2024</h2>
-
-  <h2 style="margin-bottom: 1em;color: white;">Index Comparison</h2>
-  <img src="./Figures/PDO/PDO_INDEX_TS_LT_ST.png"
-       alt="PDO Index Short-Term"
+  <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">PDO [ST]</h1>
+  <h2 style="margin-bottom: 1em;color: white;">Index 1981–2024</h2>
+  <img src="./Figures/PDO/PDO_INDEX_TS_ST.png"
+       alt="PDO Index PSD Short-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   <p style="margin-top:10px; font-size:0.95em; color:#444;">
-    PDO Index (Short-Term)
+    PDO Index and PSD (Short-Term)
   </p>
   <h1 style="font-size: 2.5em; margin-bottom: 0.1em;color: white;">
   Regression Analysis
@@ -164,22 +207,22 @@ showImage('agr-top', 'agr');
 
   <!-- Toggle Buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImageST('pdsiST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="showImageST('smST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
+    <button onclick="showImageST('pdsiST')"    style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="showImageST('smST')"      style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
     <button onclick="showImageST('pptgpcpST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
-    <button onclick="showImageST('pptcruST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="showImageST('tmpST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="showImageST('allST')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
+    <button onclick="showImageST('pptcruST')"  style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="showImageST('tmpST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="showImageST('allST')"     style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
   </div>
 
   <!-- Image Containers -->
   <div id="image-container-ST" style="max-width:900px; margin:0 auto;">
-    <img id="pdsiST" src="./Figures/PDO/PDO_SST_PDSI_REG_ST.png" alt="PDO Short Term PDSI" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="smST" src="./Figures/PDO/PDO_SST_SM_REG_ST.png" alt="PDO Short Term SM" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pdsiST"    src="./Figures/PDO/PDO_SST_PDSI_REG_ST.png"     alt="PDO Short Term PDSI"     style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="smST"      src="./Figures/PDO/PDO_SST_SM_REG_ST.png"       alt="PDO Short Term SM"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
     <img id="pptgpcpST" src="./Figures/PDO/PDO_PPT_GPCP_REG_ST.png" alt="PDO Short Term PPT_GPCP" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="pptcruST" src="./Figures/PDO/PDO_SST_PPT_CRU_REG_ST.png" alt="PDO Short Term PPT_CRU" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tmpST" src="./Figures/PDO/PDO_SST_TMP_REG_ST.png" alt="PDO Short Term TMP" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="allST" src="./Figures/PDO/PDO_ALL_REG_ST.png" alt="PDO Short Term ALL" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptcruST"  src="./Figures/PDO/PDO_SST_PPT_CRU_REG_ST.png"  alt="PDO Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tmpST"     src="./Figures/PDO/PDO_SST_TMP_REG_ST.png"      alt="PDO Short Term TMP"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="allST"     src="./Figures/PDO/PDO_ALL_REG_ST.png"          alt="PDO Short Term ALL"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 
   <!-- Agreements -->
@@ -190,14 +233,39 @@ showImage('agr-top', 'agr');
     Agreement of PDO teleconnections over the recent record.
   </h3>
 
+  <!-- Phase toggle -->
+  <div style="margin-bottom:15px;">
+    <button id="agrst-phase-top" onclick="setAgrstPhase('top')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
+    <button id="agrst-phase-bot" onclick="setAgrstPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+  </div>
+
+  <!-- Variable buttons -->
   <div style="margin-bottom:30px;">
-    <button onclick="showImage('agrst-top','agrst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Top 15%</button>
-    <button onclick="showImage('agrst-bot','agrst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">Bottom 15%</button>
+    <button onclick="setAgrstVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
+    <button onclick="setAgrstVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
+    <button onclick="setAgrstVar('sm')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
+    <button onclick="setAgrstVar('pptgpcp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
+    <button onclick="setAgrstVar('pptcru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
+    <button onclick="setAgrstVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
+    <button onclick="setAgrstVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
   </div>
 
   <div id="agrst-container" style="max-width:900px; margin:0 auto;">
-    <img id="agrst-top" src="./Figures/PDO/PDO_TOP15_AGREEMENT_ST.png" alt="PDO Short Term Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot" src="./Figures/PDO/PDO_BOT15_AGREEMENT_ST.png" alt="PDO Short Term Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-sst"     src="./Figures/PDO/PDO_SST_AGR_TOP_ST.png"       alt="PDO Short Term SST Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pdsi"    src="./Figures/PDO/PDO_PDSI_AGR_TOP_ST.png"      alt="PDO Short Term PDSI Agreement (Top 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-sm"      src="./Figures/PDO/PDO_SM_AGR_TOP_ST.png"        alt="PDO Short Term SM Agreement (Top 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pptgpcp" src="./Figures/PDO/PDO_PPT_GPCP_AGR_TOP_ST.png"  alt="PDO Short Term PPT_GPCP Agreement (Top 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-pptcru"  src="./Figures/PDO/PDO_PPT_CRU_AGR_TOP_ST.png"   alt="PDO Short Term PPT_CRU Agreement (Top 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-tmp"     src="./Figures/PDO/PDO_TMP_AGR_TOP_ST.png"       alt="PDO Short Term TMP Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-all"     src="./Figures/PDO/PDO_ALL_AGR_TOP_ST.png"       alt="PDO Short Term ALL Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+
+    <img id="agrst-bot-sst"     src="./Figures/PDO/PDO_SST_AGR_BOT_ST.png"       alt="PDO Short Term SST Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pdsi"    src="./Figures/PDO/PDO_PDSI_AGR_BOT_ST.png"      alt="PDO Short Term PDSI Agreement (Bottom 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-sm"      src="./Figures/PDO/PDO_SM_AGR_BOT_ST.png"        alt="PDO Short Term SM Agreement (Bottom 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pptgpcp" src="./Figures/PDO/PDO_PPT_GPCP_AGR_BOT_ST.png"  alt="PDO Short Term PPT_GPCP Agreement (Bottom 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-pptcru"  src="./Figures/PDO/PDO_PPT_CRU_AGR_BOT_ST.png"   alt="PDO Short Term PPT_CRU Agreement (Bottom 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-tmp"     src="./Figures/PDO/PDO_TMP_AGR_BOT_ST.png"       alt="PDO Short Term TMP Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-all"     src="./Figures/PDO/PDO_ALL_AGR_BOT_ST.png"       alt="PDO Short Term ALL Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 </section>
 
@@ -210,11 +278,37 @@ function showImageST(id) {
   document.getElementById(id).style.display = 'block';
 }
 
+// ── Agreement Maps (ST): phase + variable toggle ────────────────────────────
+const agrstState = { phase: 'top', variable: 'pdsi' };
+
+function updateAgrstImage() {
+  document.querySelectorAll('#agrst-container img').forEach(img => img.style.display = 'none');
+  const el = document.getElementById(`agrst-${agrstState.phase}-${agrstState.variable}`);
+  if (el) el.style.display = 'block';
+}
+
+function setAgrstPhase(phase) {
+  agrstState.phase = phase;
+  const topBtn = document.getElementById('agrst-phase-top');
+  const botBtn = document.getElementById('agrst-phase-bot');
+  const activeStyle   = { background: '#95d5b2', color: '#1b4332' };
+  const inactiveStyle = { background: 'transparent', color: '#95d5b2' };
+  Object.assign(topBtn.style, phase === 'top' ? activeStyle : inactiveStyle);
+  Object.assign(botBtn.style, phase === 'bot' ? activeStyle : inactiveStyle);
+  updateAgrstImage();
+}
+
+function setAgrstVar(v) {
+  agrstState.variable = v;
+  updateAgrstImage();
+}
+
 // Show PDSI by default
 showImageST('pdsiST');
-showImage('agrst-top', 'agrst');
+updateAgrstImage();
 </script>
 
+<!-- Footer -->
 <footer class="hydra-footer">
   <div class="hydra-footer-inner">
     <div>
