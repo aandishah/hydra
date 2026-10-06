@@ -64,7 +64,7 @@ title: AMO
 
     <!-- Image -->
   <div style="display:flex; justify-content:center;">
-    <img src="./Figures/AMO/AAO_INDEX_TS_LT_ST.png"
+    <img src="./Figures/AMO/AMO_INDEX_TS_LT_ST.png"
        alt="AMO Index PSD Long-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
@@ -86,6 +86,7 @@ title: AMO
   <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">AMO [LT] </h1>
   <h2 style="margin-bottom: 1em;color: white;">Index 1901–2024 </h2>
   <img src="./Figures/AMO/AAO_INDEX_TS_LT.png"
+  <img src="./Figures/AMO/AMO_INDEX_TS_LT_ST.png"
        alt="AMO Index PSD Long-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   <p style="margin-top:10px; font-size:0.95em; color:#444;">
@@ -108,10 +109,10 @@ title: AMO
   </div>
 
   <div id="tele-container" style="max-width:900px; margin:0 auto;">
-    <img id="tele-pdsi" src="./Figures/AMO/AAO_SST_PDSI_REG_LT.png" alt="AMO Long Term PDSI Teleconnection" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tele-ppt_cru"  src="./Figures/AMO/AAO_SST_PPT_CRU_REG_LT.png"  alt="AMO Long Term PPT_CRU Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tele-tmp"  src="./Figures/AMO/AAO_SST_TMP_REG_LT.png"  alt="AMO Long Term TMP Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tele-all"  src="./Figures/AMO/AAO_ALL_REG_LT.png" alt="AMO Long Term ALL Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-pdsi" src="./Figures/AMO/AMO_SST_PDSI_REG_LT.png" alt="AMO Long Term PDSI Teleconnection" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-ppt_cru"  src="./Figures/AMO/AMO_SST_PPT_CRU_REG_LT.png"  alt="AMO Long Term PPT_CRU Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-tmp"  src="./Figures/AMO/AMO_SST_TMP_REG_LT.png"  alt="AMO Long Term TMP Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tele-all"  src="./Figures/AMO/AMO_ALL_REG_LT.png" alt="AMO Long Term ALL Teleconnection"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 
   <!-- Agreements -->
@@ -128,27 +129,9 @@ title: AMO
     <button id="agr-phase-bot" onclick="setAgrPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
   </div>
 
-  <!-- Variable buttons -->
-  <div style="margin-bottom:30px;">
-    <button onclick="setAgrVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
-    <button onclick="setAgrVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="setAgrVar('ppt_cru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="setAgrVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="setAgrVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
-  </div>
-
   <div id="agr-container" style="max-width:900px; margin:0 auto;">
-    <img id="agr-top-sst" src="./Figures/AMO/AAO_SST_AGR_TOP_LT.png" alt="AMO Long Term SST Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-top-pdsi" src="./Figures/AMO/AAO_PDSI_AGR_TOP_LT.png" alt="AMO Long Term PDSI Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-top-ppt_cru" src="./Figures/AMO/AAO_PPT_CRU_AGR_TOP_LT.png" alt="AMO Long Term PPT_CRU Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-top-tmp" src="./Figures/AMO/AAO_TMP_AGR_TOP_LT.png" alt="AMO Long Term TMP Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-top-all" src="./Figures/AMO/AAO_ALL_AGR_TOP_LT.png" alt="AMO Long Term ALL Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-
-    <img id="agr-bot-sst" src="./Figures/AMO/AAO_SST_AGR_BOT_LT.png" alt="AMO Long Term SST Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-bot-pdsi" src="./Figures/AMO/AAO_PDSI_AGR_BOT_LT.png" alt="AMO Long Term PDSI Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-bot-ppt_cru" src="./Figures/AMO/AAO_PPT_CRU_AGR_BOT_LT.png" alt="AMO Long Term PPT_CRU Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-bot-tmp" src="./Figures/AMO/AAO_TMP_AGR_BOT_LT.png" alt="AMO Long Term TMP Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agr-bot-all" src="./Figures/AMO/AAO_ALL_AGR_BOT_LT.png" alt="AMO Long Term ALL Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-top-all" src="./Figures/AMO/AMO_TOP15_AGREEMENT_LT.png" alt="AMO Long Term Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agr-bot-all" src="./Figures/AMO/AMO_BOT15_AGREEMENT_LT.png" alt="AMO Long Term Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 </section>
 
@@ -159,7 +142,7 @@ function showImage(id, group) {
 }
 
 // ── Agreement Maps (LT): phase + variable toggle ────────────────────────────
-const agrState = { phase: 'top', variable: 'pdsi' };
+const agrState = { phase: 'top', variable: 'all' };
 
 function updateAgrImage() {
   document.querySelectorAll('#agr-container img').forEach(img => img.style.display = 'none');
@@ -192,7 +175,7 @@ updateAgrImage();
 <section id="AMO-short" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
   <h1 style="font-size: 3em; margin-bottom: 0.1em; color: white;">AMO [ST]</h1>
   <h2 style="margin-bottom: 1em;color: white;">Index 1981–2024</h2>
-  <img src="./Figures/AMO/AAO_INDEX_TS_ST.png"
+  <img src="./Figures/AMO/AMO_INDEX_TS_LT_ST.png"
        alt="AMO Index PSD Short-Term"
        style="max-width:1000px; width:100%; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   <p style="margin-top:10px; font-size:0.95em; color:#444;">
@@ -217,12 +200,12 @@ updateAgrImage();
 
   <!-- Image Containers -->
   <div id="image-container-ST" style="max-width:900px; margin:0 auto;">
-    <img id="pdsiST"    src="./Figures/AMO/AAO_SST_PDSI_REG_ST.png"     alt="AMO Short Term PDSI"     style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="smST"      src="./Figures/AMO/AAO_SST_SM_REG_ST.png"       alt="AMO Short Term SM"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="pptgpcpST" src="./Figures/AMO/AAO_PPT_GPCP_REG_ST.png" alt="AMO Short Term PPT_GPCP" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="pptcruST"  src="./Figures/AMO/AAO_SST_PPT_CRU_REG_ST.png"  alt="AMO Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="tmpST"     src="./Figures/AMO/AAO_SST_TMP_REG_ST.png"      alt="AMO Short Term TMP"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="allST"     src="./Figures/AMO/AAO_ALL_REG_ST.png"          alt="AMO Short Term ALL"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pdsiST"    src="./Figures/AMO/AMO_SST_PDSI_REG_ST.png"     alt="AMO Short Term PDSI"     style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="smST"      src="./Figures/AMO/AMO_SST_SM_REG_ST.png"       alt="AMO Short Term SM"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptgpcpST" src="./Figures/AMO/AMO_PPT_GPCP_REG_ST.png" alt="AMO Short Term PPT_GPCP" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="pptcruST"  src="./Figures/AMO/AMO_SST_PPT_CRU_REG_ST.png"  alt="AMO Short Term PPT_CRU"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="tmpST"     src="./Figures/AMO/AMO_SST_TMP_REG_ST.png"      alt="AMO Short Term TMP"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="allST"     src="./Figures/AMO/AMO_ALL_REG_ST.png"          alt="AMO Short Term ALL"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 
   <!-- Agreements -->
@@ -239,33 +222,9 @@ updateAgrImage();
     <button id="agrst-phase-bot" onclick="setAgrstPhase('bot')" style="margin:5px; padding:10px 26px; border:2px solid #95d5b2; border-radius:8px; background:transparent; color:#95d5b2; font-weight:bold; cursor:pointer;">Bottom 15%</button>
   </div>
 
-  <!-- Variable buttons -->
-  <div style="margin-bottom:30px;">
-    <button onclick="setAgrstVar('sst')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SST</button>
-    <button onclick="setAgrstVar('pdsi')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PDSI</button>
-    <button onclick="setAgrstVar('sm')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">SM</button>
-    <button onclick="setAgrstVar('pptgpcp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_GPCP</button>
-    <button onclick="setAgrstVar('pptcru')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">PPT_CRU</button>
-    <button onclick="setAgrstVar('tmp')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">TMP</button>
-    <button onclick="setAgrstVar('all')" style="margin:5px; padding:12px 24px; border:none; border-radius:8px; background:#95d5b2; color:#1b4332; font-weight:bold; cursor:pointer;">ALL</button>
-  </div>
-
   <div id="agrst-container" style="max-width:900px; margin:0 auto;">
-    <img id="agrst-top-sst"     src="./Figures/AMO/AAO_SST_AGR_TOP_ST.png"       alt="AMO Short Term SST Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-pdsi"    src="./Figures/AMO/AAO_PDSI_AGR_TOP_ST.png"      alt="AMO Short Term PDSI Agreement (Top 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-sm"      src="./Figures/AMO/AAO_SM_AGR_TOP_ST.png"        alt="AMO Short Term SM Agreement (Top 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-pptgpcp" src="./Figures/AMO/AAO_PPT_GPCP_AGR_TOP_ST.png"  alt="AMO Short Term PPT_GPCP Agreement (Top 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-pptcru"  src="./Figures/AMO/AAO_PPT_CRU_AGR_TOP_ST.png"   alt="AMO Short Term PPT_CRU Agreement (Top 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-tmp"     src="./Figures/AMO/AAO_TMP_AGR_TOP_ST.png"       alt="AMO Short Term TMP Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-top-all"     src="./Figures/AMO/AAO_ALL_AGR_TOP_ST.png"       alt="AMO Short Term ALL Agreement (Top 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-
-    <img id="agrst-bot-sst"     src="./Figures/AMO/AAO_SST_AGR_BOT_ST.png"       alt="AMO Short Term SST Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-pdsi"    src="./Figures/AMO/AAO_PDSI_AGR_BOT_ST.png"      alt="AMO Short Term PDSI Agreement (Bottom 15%)"      style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-sm"      src="./Figures/AMO/AAO_SM_AGR_BOT_ST.png"        alt="AMO Short Term SM Agreement (Bottom 15%)"        style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-pptgpcp" src="./Figures/AMO/AAO_PPT_GPCP_AGR_BOT_ST.png"  alt="AMO Short Term PPT_GPCP Agreement (Bottom 15%)"  style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-pptcru"  src="./Figures/AMO/AAO_PPT_CRU_AGR_BOT_ST.png"   alt="AMO Short Term PPT_CRU Agreement (Bottom 15%)"   style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-tmp"     src="./Figures/AMO/AAO_TMP_AGR_BOT_ST.png"       alt="AMO Short Term TMP Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
-    <img id="agrst-bot-all"     src="./Figures/AMO/AAO_ALL_AGR_BOT_ST.png"       alt="AMO Short Term ALL Agreement (Bottom 15%)"       style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-top-all" src="./Figures/AMO/AMO_TOP15_AGREEMENT_ST.png" alt="AMO Short Term Agreement (Top 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
+    <img id="agrst-bot-all" src="./Figures/AMO/AMO_BOT15_AGREEMENT_ST.png" alt="AMO Short Term Agreement (Bottom 15%)" style="width:100%; display:none; border-radius:12px; box-shadow:0 2px 10px rgba(0,0,0,0.2);">
   </div>
 </section>
 
@@ -279,7 +238,7 @@ function showImageST(id) {
 }
 
 // ── Agreement Maps (ST): phase + variable toggle ────────────────────────────
-const agrstState = { phase: 'top', variable: 'pdsi' };
+const agrstState = { phase: 'top', variable: 'all' };
 
 function updateAgrstImage() {
   document.querySelectorAll('#agrst-container img').forEach(img => img.style.display = 'none');
