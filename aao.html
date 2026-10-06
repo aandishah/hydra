@@ -3,7 +3,6 @@ layout: default
 title: AAO
 ---
 
-
 <!-- Navbar -->
 <nav class="hydra-nav" style="position:fixed; top:0; left:0; right:0; z-index:1000; box-shadow:0 2px 6px rgba(0,0,0,0.2);">
   <div style="background:#1b4332; padding:14px 40px; display:flex; justify-content:space-between; align-items:center;">
@@ -74,9 +73,20 @@ title: AAO
 <section style="text-align:center; padding: 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
   <h1 style="font-size: 3em; margin-bottom: 0.3em; color: white;">AAO</h1>
   <h2 style="font-weight: 400; margin-bottom: 1em;color: white;"> Antarctic Annual Oscilation </h2>
-  <p style="font-size: 1.2em; max-width: 700px; margin: 0.1 auto;">
+  <p style="font-size: 1.2em; max-width: 700px; margin: 0 auto 24px; text-align: center;">
     Analyze the influence of AAO on global hydroclimate variability.
   </p>
+
+  <!-- At a glance -->
+  <div class="hydra-glance">
+    <div class="hydra-glance-top"><span class="hydra-glance-title">At a glance</span><span class="hydra-glance-type">Atmospheric circulation index</span></div>
+    <dl>
+      <dt>Definition</dt><dd>EOF of monthly mean 700-hPa geopotential height anomalies poleward of 20°S.</dd>
+      <dt>Data source</dt><dd>ERA5 700-hPa geopotential height</dd>
+      <dt>Periods</dt><dd>Intermediate term 1941–2024 · Short term 1981–2024</dd>
+      <dt>Key reference</dt><dd>Mo (2000)</dd>
+    </dl>
+  </div>
 
     <!-- Image -->
   <div style="display:flex; justify-content:center;">
@@ -95,21 +105,6 @@ title: AAO
     </a>
   </div>
 </section>
-
-<!-- At a glance -->
-<div class="hydra-glance">
-  <h3>AAO at a glance</h3>
-  <span class="hydra-glance-type">Atmospheric circulation index</span>
-  <dl>
-    <dt>Full name</dt><dd>Antarctic Oscillation</dd>
-    <dt>Definition</dt><dd>EOF of monthly mean 700-hPa geopotential height anomalies poleward of 20°S.</dd>
-    <dt>Data source</dt><dd>ERA5 700-hPa geopotential height</dd>
-    <dt>Analysis periods</dt><dd>Intermediate term 1941–2024 · Short term 1981–2024</dd>
-    <dt>Key reference</dt><dd>Mo (2000)</dd>
-  </dl>
-</div>
-
-
 
 <!-- AAO Intermediate Term Section -->
 <section id="AAO-long" style="text-align:center; padding:100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white; border-radius:12px; margin:40px auto; max-width:1200px;">
