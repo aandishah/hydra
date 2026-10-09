@@ -1,42 +1,13 @@
-# HYDRA: HYdrological Drought & Rainfall Atlas
+This is the readme file for the dataset 'HYDRA' (HYdrological Drought & Rainfall Atlas) developed by Aandishah Tehzeeb Samara.
 
-![Dark Green Nonprofit Indigenous Art Classy Minimalist Charity Email Header](./HYDRA Header%20Header.png)
-
-This repository contains a set of streamlined Python functions for computing and performing regression analysis between large-scale climate modes (e.g., ENSO, PDO, IOD) and hydroclimate fields (e.g., PDSI, SST, soil moisture). It is designed for use with datasets that are already seasonally averaged (e.g., DJF, MAM, JJA, SON), and leverages xarray, numpy, and matplotlib for geospatial analysis and visualization.
-
-**Lead Developer:**  
-Aandishah Tehzeeb Samara (Columbia University, Lamont Doeherty Earth Observatory)  
-
-**Collaborators:**  
-Richard Seager(Lamont Doeherty Earth Observatory) & Jason Smerdon (Columbia Climate School)
-
-**Key Features** 
-
-* Lagged Regression Analysis: Supports both positive and negative lags, allowing for "index leads" or "field leads" logic, with customizable lags in both seasons and years.
-* Flexible Inputs: Works directly with xarray.DataArray objects containing seasonal time-series data.
-* Detrending & Significance Testing: All regressions include safe linear detrending and p-value estimation using a t-distribution, with hatching overlays for non-significant areas.
-* Custom Plotting Functions: Includes plotting options for multi-panel seasonal maps and joint maps that overlay ocean only and land only variables on the same projection.
-
-**Applications**
-
-* Exploring teleconnections between climate indices and drought fields
-* Attribution of hydroclimatic anomalies to seasonal phases of climate modes
-* Visualization of global wetting/drying patterns
-
-**Dependencies**
-
-xarray, numpy, scipy, matplotlib, cartopy
-
-**Structure** [NEED TO UPDATED]
-
-* regression.py – main regression routines
-* plotting.py – multi-panel and dual-variable map plotting functions
-* utils.py – detrending, time shifting, and alignment helpers
-* notebooks/ – example Jupyter notebooks demonstrating usage on real data
-
-**Project website (GitHub Pages)** :  [WAITING ON VERFICATION]
-
-* [https://aandishah.github.io/hydra](https://aandishah.github.io/hydra)
-
-
-
+HYDRA is a standardized dataset of ten climate variability indices and their teleconnections with global hydroclimate. It includes five ocean-based indices (ENSO, PDO, AMO, IOD, TPI) computed from HadISST 1.1 sea surface temperature, and five atmospheric circulation-based indices (AO, AAO, NAO, NPI, SAM) computed from ERA5 geopotential height and sea level pressure.
+HYDRA covers three analysis periods: long term (LT, 1901–2024) for the ocean-based indices, intermediate term (IT, 1941–2024) for the atmospheric circulation-based indices, and short term (ST, 1981–2024) for all ten indices. Indices are computed monthly and aggregated to seasonal means (DJF, MAM, JJA, SON). Hydroclimate fields are drawn from CRU TS v4.09 (precipitation, temperature, PDSI), GLEAM v4.2a (soil moisture) and GPCP v2.3 (precipitation). Gridded products are provided in NetCDF-4 format; index time series and extreme states are also provided in CSV format.
+The folder 'indices' contains the computed climate index time series (monthly and seasonal) for all periods.
+The subfolder 'validation' contains the index series correlated against published reference indices for validation.
+The folder 'teleconnections' contains the seasonal regression and correlation maps between each index and each hydroclimate field: LT for the ocean-based indices, IT for the atmospheric circulation-based indices, and ST for all indices.
+The folder 'agreements' contains the agreement composite files, which show where the top and bottom 15th percentile years of each index coincide with extreme hydroclimate years, for the LT, IT and ST periods.
+The labels 'LT', 'IT' and 'ST' in file names refer to the long-term, intermediate-term and short-term periods. 'TOP' and 'BOT' refer to the top and bottom 15th percentile of index years.
+A conda environment file (hydra_env.yml) is included to help install the Python package dependencies.
+Please find more details (e.g., index definitions, validation results, and the agreement composite method) in the reference: [manuscript title]. The manuscript has been submitted to Scientific Data for peer review.
+Project website: https://aandishah.github.io/hydra
+Please contact Aandishah Tehzeeb Samara at Columbia University (Lamont-Doherty Earth Observatory) at aandishah.s@columbia.edu for any questions.
