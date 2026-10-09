@@ -8,6 +8,6 @@ The folder 'teleconnections' contains the seasonal regression and correlation ma
 The folder 'agreements' contains the agreement composite files, which show where the top and bottom 15th percentile years of each index coincide with extreme hydroclimate years, for the LT, IT and ST periods.
 The labels 'LT', 'IT' and 'ST' in file names refer to the long-term, intermediate-term and short-term periods. 'TOP' and 'BOT' refer to the top and bottom 15th percentile of index years.
 A conda environment file (hydra_env.yml) is included to help install the Python package dependencies.
-Please find more details (e.g., index definitions, validation results, and the agreement composite method) in the reference: [manuscript title]. The manuscript has been submitted to Scientific Data for peer review.
+Please find more details (e.g., index definitions, validation results, and the agreement composite method) in the reference: The HYdroclimate Drought and Rainfall Atlas (HYDRA): A global atlas of hydroclimate variability linked to large-scale ocean-atmosphere climate modes. The manuscript has been submitted to Scientific Data for peer review.
 Project website: https://aandishah.github.io/hydra
 Please contact Aandishah Tehzeeb Samara at Columbia University (Lamont-Doherty Earth Observatory) at aandishah.s@columbia.edu for any questions.
