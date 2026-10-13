@@ -1,5 +1,3 @@
-This is the readme file for the dataset 'HYDRA' (HYdrological Drought & Rainfall Atlas) developed by Aandishah Tehzeeb Samara.
-
 HYDRA is a standardized dataset of ten climate variability indices and their teleconnections with global hydroclimate. It includes five ocean-based indices (ENSO, PDO, AMO, IOD, TPI) computed from HadISST 1.1 sea surface temperature, and five atmospheric circulation-based indices (AO, AAO, NAO, NPI, SAM) computed from ERA5 geopotential height and sea level pressure.
 HYDRA covers three analysis periods: long term (LT, 1901–2024) for the ocean-based indices, intermediate term (IT, 1941–2024) for the atmospheric circulation-based indices, and short term (ST, 1981–2024) for all ten indices. Indices are computed monthly and aggregated to seasonal means (DJF, MAM, JJA, SON). Hydroclimate fields are drawn from CRU TS v4.09 (precipitation, temperature, PDSI), GLEAM v4.2a (soil moisture) and GPCP v2.3 (precipitation). Gridded products are provided in NetCDF-4 format; index time series and extreme states are also provided in CSV format.
 
