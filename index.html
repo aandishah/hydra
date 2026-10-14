@@ -159,13 +159,24 @@ title: Hydrological Drought & Rainfall Atlas
     max-width:1000px; margin:34px auto 0 auto; padding-top:20px;
     border-top:1px solid rgba(255,255,255,0.15); font-size:0.85em; text-align:center;
   }
+  /* Atlas tour cover animation (transparent WebP on the banner) */
+  .hydra-cover { max-width:1200px; margin:0 auto 34px auto; }
+  .hydra-cover img { display:block; width:100%; height:auto; cursor:default; }
+  .hydra-cover figcaption { margin-top:6px; font-size:0.85em; color:#ffffff; opacity:0.85; }
 </style>
 
 <!-- Add spacing so content isn’t hidden under navbar -->
 <div style="height:100px;"></div>
 
 <!-- Banner Section -->
-<section style="text-align:center; padding: 80px 20px 100px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+<section style="text-align:center; padding: 50px 20px 90px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <!-- Atlas tour animation (transparent background, so the banner shows through) -->
+  <figure class="hydra-cover">
+    <img src="./Figures/cover/hydra_atlas_tour.webp"
+         alt="Animated tour of the ten HYDRA climate indices and their December–February SST and precipitation teleconnections">
+    <figcaption>Ten climate modes and their December–February SST and precipitation teleconnections, 1981–2024</figcaption>
+  </figure>
+
   <p style="font-size: 1.2em; max-width: 720px; margin: 0 auto 26px auto;">
     An online archive for exploring the links between different climate indices and hydroclimate fields.
     Analyze teleconnection maps from regressions and agreement composites to visualize the connections between
