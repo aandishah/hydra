@@ -102,6 +102,7 @@ title: Hydrological Drought & Rainfall Atlas
   .hydra-access-card:hover { box-shadow:0 0 0 2px #95d5b2; border-color:#95d5b2; }
   .hydra-access-card h3 { margin-top:0; color:#1b4332; }
   .hydra-todo { color:#b06000; font-size:0.85em; }
+  .hydra-access-link { font-weight:bold; color:#2d6a4f; word-break:break-all; }
 
   /* Footer */
   .hydra-footer { background:#1b4332; color:#d8f3dc; padding:50px 20px 30px 20px; }
@@ -320,20 +321,27 @@ title: Hydrological Drought & Rainfall Atlas
       <div class="hydra-access-card">
         <h3>📦 Zenodo archive</h3>
         <p>The complete data product: index time series, teleconnection maps, and agreement composites, organized by index, season, variable, and period.</p>
-        <p class="hydra-todo">TODO: add Zenodo DOI link</p>
+        <p><a class="hydra-access-link" href="https://doi.org/10.5281/zenodo.22956140" target="_blank" rel="noopener">doi.org/10.5281/zenodo.22956140 ↗</a></p>
       </div>
       <div class="hydra-access-card">
         <h3>💻 GitHub repository</h3>
         <p>All Python code used to compute the indices, perform regression and agreement composite analyses, and generate figures.</p>
-        <p class="hydra-todo">TODO: add GitHub repository link</p>
+        <p><a class="hydra-access-link" href="https://github.com/aandishah/hydra" target="_blank" rel="noopener">github.com/aandishah/hydra ↗</a></p>
       </div>
       <div class="hydra-access-card">
         <h3>🗂️ Archive structure</h3>
-        <p style="font-family:monospace; font-size:0.85em; line-height:1.8; color:#495057;">
-          /indices/<br>
-          /indices/validation/<br>
-          /teleconnections/<br>
-          /agreements/
+        <p style="font-size:0.9em; line-height:1.75; color:#343a40; margin-bottom:8px;">
+          <code>indices/</code> — index time series<br>
+          &nbsp;&nbsp;&nbsp;<code>val/</code> — validation against published indices<br>
+          &nbsp;&nbsp;&nbsp;<code>ext_years/</code> — extreme (top/bottom 15%) years, CSV<br>
+          <code>teleconnections/</code> — seasonal regression maps<br>
+          <code>agreements/</code> — agreement composites
+        </p>
+        <p style="font-size:0.8em; color:#6c757d; line-height:1.6; margin:0;">
+          File names follow the index, variable and period, e.g.<br>
+          <code>ENSO_SST_PDSI_REG_LT.nc</code><br>
+          <code>ENSO_PDSI_AGR_TOP_LT.nc</code><br>
+          LT 1901–2024 · IT 1941–2024 · ST 1981–2024
         </p>
       </div>
     </div>
@@ -347,14 +355,13 @@ title: Hydrological Drought & Rainfall Atlas
     A conda environment file is provided to install the Python dependencies.
   </p>
   <pre style="text-align:left; background:#212529; color:#f8f9fa; padding:22px; border-radius:10px; overflow-x:auto;">
-# TODO: replace with the HYDRA repository URL
-git clone https://github.com/&lt;org&gt;/hydra.git
+git clone https://github.com/aandishah/hydra.git
 cd hydra
 
 conda env create -f hydra_env.yml
 conda activate hydra
 
-jupyter notebook examples/enso_pdsi_regression.ipynb
+jupyter notebook notebooks/PDO_INDEX_ANALYSIS.ipynb
   </pre>
 </section>
 

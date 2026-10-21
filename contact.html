@@ -38,14 +38,68 @@ title: Contact | HYDRA
     font-weight: bold;
     text-shadow: 0 0 6px #95d5b2, 0 0 14px #95d5b2;
   }
+  .hydra-body { max-width: 900px; margin: auto; padding: 0 20px; line-height: 1.7; }
+  .hydra-body h2 { margin-top: 50px; color:#1b4332; }
+  .hydra-contact { display:flex; flex-wrap:wrap; gap:10px 26px; align-items:center; background:#e9f5ec; border-radius:10px; padding:16px 22px; margin:40px 0 10px 0; color:#1b4332; }
+  .hydra-contact strong { font-size:1.05em; }
+  .hydra-contact a { color:#1b4332; }
+  .hydra-contact .note { flex-basis:100%; margin:0; }
+  .hydra-authors { display:grid; grid-template-columns:repeat(auto-fit, minmax(240px, 1fr)); gap:18px; margin-top:16px; }
+  .hydra-author { background:#f8f9fa; border:1px solid #e3e8e5; border-radius:12px; padding:20px; }
+  .hydra-author .nm { font-weight:bold; color:#1b4332; font-size:1.1em; }
+  .hydra-author .role { display:inline-block; margin:6px 0 10px 0; font-size:0.72em; font-weight:bold; letter-spacing:0.4px; text-transform:uppercase; color:#2d6a4f; background:#e9f5ec; padding:2px 10px; border-radius:999px; }
+  .hydra-author .ttl { font-size:0.93em; color:#343a40; line-height:1.5; }
+  .hydra-author a { display:inline-block; margin-top:10px; font-size:0.9em; color:#2d6a4f; }
+  .hydra-affil { margin-top:14px; font-size:0.88em; color:#495057; }
 </style>
 
 <!-- Add spacing so content isn’t hidden under navbar -->
 <div style="height:100px;"></div>
 
-<!-- Contact Section -->
-<section style="padding: 80px 20px; text-align:center;">
-  <h2>🙌 Contributing & Contact</h2>
-  <p>Contributions are welcome! Submit a pull request or open an issue.</p>
-  <p>For questions, email <a href="mailto:aandishah@gmail.com">aandishah@gmail.com</a>.</p>
+<!-- Hero -->
+<section style="text-align:center; padding: 70px 20px; background: linear-gradient(135deg, #1b4332, #2d6a4f); color: white;">
+  <h1 style="margin-bottom:16px; font-size:2em;">Contact</h1>
+  <p style="font-size: 1.15em; max-width: 780px; margin: 0 auto;">
+    Questions, contributions, and the people behind HYDRA.
+  </p>
 </section>
+
+<div class="hydra-body">
+
+  <!-- Contact -->
+  <div class="hydra-contact">
+    <strong>Contact us</strong>
+    <span>✉ <a href="mailto:aandishah.s@columbia.edu">aandishah.s@columbia.edu</a></span>
+    <span>Lamont-Doherty Earth Observatory, 61 Route 9W, Palisades, NY 10964</span>
+    <span><a href="https://github.com/aandishah/hydra/issues" target="_blank" rel="noopener">Report an issue on GitHub</a></span>
+    <span><a href="https://doi.org/10.5281/zenodo.22956140" target="_blank" rel="noopener">Data on Zenodo</a></span>
+    <p class="note">Contributions are welcome! Submit a pull request or open an issue on GitHub.</p>
+  </div>
+
+  <!-- Authors -->
+  <h2>Authors</h2>
+  <div class="hydra-authors">
+    <div class="hydra-author">
+      <div class="nm">Aandishah Tehzeeb Samara</div>
+      <span class="role">Lead developer</span>
+      <div class="ttl">PhD Candidate, Department of Earth and Environmental Sciences, Columbia University<br>Ocean and Climate Physics, Lamont-Doherty Earth Observatory</div>
+      <a href="mailto:aandishah.s@columbia.edu">aandishah.s@columbia.edu</a>
+    </div>
+    <div class="hydra-author">
+      <div class="nm">Richard Seager</div>
+      <span class="role">Co-author</span>
+      <div class="ttl">Ewing Lamont Research Professor<br>Ocean and Climate Physics, Lamont-Doherty Earth Observatory</div>
+      <a href="https://lamont.columbia.edu/directory/richard-seager" target="_blank" rel="noopener">Lamont profile ↗</a>
+    </div>
+    <div class="hydra-author">
+      <div class="nm">Jason E. Smerdon</div>
+      <span class="role">Co-author</span>
+      <div class="ttl">Professor of Climate, Columbia Climate School<br>Lamont-Doherty Earth Observatory<br>Vice Dean for Academic Planning, Columbia Climate School</div>
+      <a href="https://lamont.columbia.edu/directory/jason-e-smerdon" target="_blank" rel="noopener">Lamont profile ↗</a>
+    </div>
+  </div>
+  <p class="hydra-affil">HYDRA is developed at the Lamont-Doherty Earth Observatory of Columbia University, Palisades, NY.</p>
+
+</div>
+
+<div style="height:60px;"></div>
